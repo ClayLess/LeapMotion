@@ -27,4 +27,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="vs2015环境配置.doc">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="地图控制代码说明文档.doc">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
 </Project>

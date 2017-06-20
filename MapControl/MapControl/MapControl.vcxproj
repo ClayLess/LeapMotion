@@ -156,6 +156,10 @@
   <ItemGroup>
     <ClInclude Include="MapChange.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="vs2015环境配置.doc" />
+    <None Include="地图控制代码说明文档.doc" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
