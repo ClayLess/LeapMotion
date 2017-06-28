@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FormMethod; 
+using FormMethod;
+using System.Diagnostics;
+
 namespace WinForm
 {
     static class Program
