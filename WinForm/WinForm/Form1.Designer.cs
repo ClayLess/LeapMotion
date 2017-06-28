@@ -37,6 +37,7 @@
             this.DotMult_Text = new System.Windows.Forms.TextBox();
             this.LeapStatus = new System.Windows.Forms.Label();
             this.Exe_Panel = new System.Windows.Forms.Panel();
+            this.FingerList = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // button1
@@ -52,7 +53,7 @@
             // Compare_Label
             // 
             this.Compare_Label.AutoSize = true;
-            this.Compare_Label.Location = new System.Drawing.Point(226, 516);
+            this.Compare_Label.Location = new System.Drawing.Point(111, 514);
             this.Compare_Label.Name = "Compare_Label";
             this.Compare_Label.Size = new System.Drawing.Size(47, 12);
             this.Compare_Label.TabIndex = 1;
@@ -61,7 +62,7 @@
             // Eculid_Label
             // 
             this.Eculid_Label.AutoSize = true;
-            this.Eculid_Label.Location = new System.Drawing.Point(226, 543);
+            this.Eculid_Label.Location = new System.Drawing.Point(111, 541);
             this.Eculid_Label.Name = "Eculid_Label";
             this.Eculid_Label.Size = new System.Drawing.Size(41, 12);
             this.Eculid_Label.TabIndex = 2;
@@ -70,7 +71,7 @@
             // DotMult_Lable
             // 
             this.DotMult_Lable.AutoSize = true;
-            this.DotMult_Lable.Location = new System.Drawing.Point(226, 570);
+            this.DotMult_Lable.Location = new System.Drawing.Point(111, 568);
             this.DotMult_Lable.Name = "DotMult_Lable";
             this.DotMult_Lable.Size = new System.Drawing.Size(47, 12);
             this.DotMult_Lable.TabIndex = 3;
@@ -78,21 +79,21 @@
             // 
             // Compare_Text
             // 
-            this.Compare_Text.Location = new System.Drawing.Point(298, 513);
+            this.Compare_Text.Location = new System.Drawing.Point(183, 511);
             this.Compare_Text.Name = "Compare_Text";
             this.Compare_Text.Size = new System.Drawing.Size(100, 21);
             this.Compare_Text.TabIndex = 4;
             // 
             // Eculid_Text
             // 
-            this.Eculid_Text.Location = new System.Drawing.Point(298, 540);
+            this.Eculid_Text.Location = new System.Drawing.Point(183, 538);
             this.Eculid_Text.Name = "Eculid_Text";
             this.Eculid_Text.Size = new System.Drawing.Size(100, 21);
             this.Eculid_Text.TabIndex = 5;
             // 
             // DotMult_Text
             // 
-            this.DotMult_Text.Location = new System.Drawing.Point(298, 567);
+            this.DotMult_Text.Location = new System.Drawing.Point(183, 565);
             this.DotMult_Text.Name = "DotMult_Text";
             this.DotMult_Text.Size = new System.Drawing.Size(100, 21);
             this.DotMult_Text.TabIndex = 6;
@@ -112,11 +113,22 @@
             this.Exe_Panel.Size = new System.Drawing.Size(640, 480);
             this.Exe_Panel.TabIndex = 8;
             // 
+            // FingerList
+            // 
+            this.FingerList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FingerList.Location = new System.Drawing.Point(426, 498);
+            this.FingerList.Name = "FingerList";
+            this.FingerList.Size = new System.Drawing.Size(226, 144);
+            this.FingerList.TabIndex = 9;
+            this.FingerList.UseCompatibleStateImageBehavior = false;
+            this.FingerList.View = System.Windows.Forms.View.Tile;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(668, 654);
+            this.Controls.Add(this.FingerList);
             this.Controls.Add(this.Exe_Panel);
             this.Controls.Add(this.LeapStatus);
             this.Controls.Add(this.DotMult_Text);
@@ -127,7 +139,6 @@
             this.Controls.Add(this.Compare_Label);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
@@ -148,6 +159,7 @@
         private System.Windows.Forms.TextBox DotMult_Text;
         private System.Windows.Forms.Label LeapStatus;
         private System.Windows.Forms.Panel Exe_Panel;
+        private System.Windows.Forms.ListView FingerList;
     }
 }
 

@@ -9,6 +9,7 @@ using HandDatas;
 using System.Threading;
 using System.Windows.Forms;
 using WinForm;
+
 namespace FormMethod
 {
     class FormHandCompare
@@ -21,6 +22,7 @@ namespace FormMethod
                 ll = new LeapListener();
             }
             runflag = false;
+            Answer_Fingers = new string[5];
         }
         public void StartListen()
         {
@@ -56,6 +58,11 @@ namespace FormMethod
             {
                 try
                 {
+                    //demo
+                    for(int i=0;i<5;i++)
+                    {
+                        Answer_Fingers[i] = ll.Answer_Fingers[i];
+                    }
                     Answer_Euclid = ll.Answer_Euclid;
                     Answer_Compare = ll.Answer_Compare;
                     Answer_Dot_Product = ll.Answer_Dot_Product;
@@ -79,9 +86,13 @@ namespace FormMethod
                 TextBox CEcu = Application.OpenForms[FormName].Controls[Ctrl_Euclid] as TextBox;
                 TextBox CDot = Application.OpenForms[FormName].Controls[Ctrl_DotMult] as TextBox;
                 Label Status = Application.OpenForms[FormName].Controls[Ctrl_Answer] as Label;
+                //+listviewer
+                ListView CFingers = Application.OpenForms[FormName].Controls["FingerList"] as ListView;
+                //
                 CCom.BeginInvoke(new Chang_Text(Change_Text_Method), CCom, Answer_Compare.ToString());
                 CEcu.BeginInvoke(new Chang_Text(Change_Text_Method), CEcu, Answer_Euclid.ToString());
                 CDot.BeginInvoke(new Chang_Text(Change_Text_Method), CDot, Answer_Dot_Product.ToString());
+                
                 if (Answer != null)
                 {
 
@@ -90,6 +101,7 @@ namespace FormMethod
                 {
                     Answer = "Leap Motion Not Online";
                 }
+                CFingers.BeginInvoke(new Chang_List(Change_Text_Method), CFingers, Answer_Fingers);
                 Status.BeginInvoke(new Chang_Lab(Change_Text_Method), Status, Answer);
             }
             catch
@@ -105,6 +117,25 @@ namespace FormMethod
         {
             tb.Text = text;
         }
+        public void Change_Text_Method(ListView tb, string[] text)
+        {
+            tb.Clear();
+            foreach (string str in text)
+            {
+                tb.Items.Add(str);
+                /*
+                ListViewItem lvi = new ListViewItem();
+                lvi.SubItems.Clear();
+                if (str != null)
+                {
+                    string[] s = str.Split(" ".ToCharArray());
+                    lvi.SubItems[0].Text=s[0];
+                    lvi.SubItems.Add(s[1]);
+                    tb.Items.Add(str);
+                }
+                */
+            }
+        }
         private Controller ctrl;
         private LeapListener ll;
         private Thread ThreadLeapListener;
@@ -112,10 +143,13 @@ namespace FormMethod
         public int Answer_Euclid;
         public int Answer_Compare;
         public int Answer_Dot_Product;
+        //fingers
+        public string[] Answer_Fingers;
         public bool changeflag;
         public bool runflag;
         public delegate void Chang_Text(TextBox tb, string text);
         public delegate void Chang_Lab(Label tb, string text);
+        public delegate void Chang_List(ListView tb, string[] text);
         private string FormName;
         private string Ctrl_Compare;
         private string Ctrl_Euclid;
@@ -131,6 +165,7 @@ namespace FormMethod
             Answer_Dot_Product = 0;
             changeflag = false;
             answer = "";
+            Answer_Fingers = new string[5];
         }
         public void OnFrame(object sender, FrameEventArgs args)
         {
@@ -176,6 +211,10 @@ namespace FormMethod
             Answer_Compare = Convert.ToInt32(Compare.Hand_Compare(HKD0, HKD1));
             Answer_Euclid = Convert.ToInt32(Compare.Hand_Euclid(HKD0, HKD1));
             Answer_Dot_Product = Convert.ToInt32(Compare.Hand_Dot_Product(HKD0, HKD1));
+            for(int i=0;i<5;i++)
+            {
+                Answer_Fingers[i] = Fin(i)+": " +Convert.ToInt32(HKD0.Finger_[i].TipPosition.DistanceTo(HKD1.Finger_[i].TipPosition)).ToString();
+            }
         }
         private void clear()
         {
@@ -183,12 +222,39 @@ namespace FormMethod
             Answer_Dot_Product = 0;
             Answer_Euclid = 0;
         }
+        private string Fin(int id)
+        {
+            string an;
+            switch(id)
+            {
+                case 0:
+                    an = "Thumb";
+                    break;
+                case 1:
+                    an = "Index";
+                    break;
+                case 2:
+                    an = "Middle";
+                    break;
+                case 3:
+                    an = "Ring";
+                    break;
+                case 4:
+                    an = "Pinky";
+                    break;
+                default:
+                    an = "NULL";
+                    break;
+            }
+            return an;
+        }
         private HandKeyData HKD0 = new HandKeyData();
         private HandKeyData HKD1 = new HandKeyData();
         public string answer;
         public int Answer_Euclid;
         public int Answer_Compare;
         public int Answer_Dot_Product;
+        public string[] Answer_Fingers;
         public bool changeflag;
     }
 }

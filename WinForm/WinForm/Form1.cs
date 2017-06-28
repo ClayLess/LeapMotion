@@ -67,11 +67,8 @@ namespace WinForm
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            /*
-            p.Start();
-            SetParent(p.MainWindowHandle, this.Exe_Panel.Handle);
-            ShowWindow(p.MainWindowHandle, 3);
-            */
+            this.FingerList.Columns.Add("Finger Name");
+            this.FingerList.Columns.Add("Tip Distance");
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -79,11 +76,17 @@ namespace WinForm
             if (pflag)
             {
                 p.Close();
+                System.Threading.Thread.Sleep(10);
                 //p.CloseMainWindow();
             }
             Process[] ps = Process.GetProcessesByName("DEMO_f");
-            if(ps.Length>0)
-            ps[0].Kill();
+            if(ps.Length > 0)
+            {
+                ps[0].Kill();
+                System.Threading.Thread.Sleep(10);
+                //ps = Process.GetProcessesByName("DEMO_f");
+            } 
+            
             System.Environment.Exit(0);
         }
     }
