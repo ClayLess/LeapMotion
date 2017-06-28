@@ -34,7 +34,7 @@ namespace WinForm
             Program.fhc.SetForm("MainForm", "Compare_Text","Eculid_Text", "DotMult_Text", "LeapStatus");
             //test
             p = new Process();
-            string path = Path.GetFullPath(".\\") + "DEMO.exe ";
+            string path = Path.GetFullPath(".\\") + "DEMO_f.exe ";
             p.StartInfo.FileName = @path;
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Maximized;//加上这句效果更好
@@ -46,7 +46,7 @@ namespace WinForm
             if(!pflag&&this.Exe_Panel.Created)
             {
                 p.Start();
-                System.Threading.Thread.Sleep(10000);
+                System.Threading.Thread.Sleep(1000);
                 SetParent(p.MainWindowHandle, this.Exe_Panel.Handle);
                 ShowWindow(p.MainWindowHandle, 3);
                 pflag = true;
@@ -78,10 +78,12 @@ namespace WinForm
         {
             if (pflag)
             {
-                p.Dispose();
                 p.Close();
-                p.Kill();
+                //p.CloseMainWindow();
             }
+            Process[] ps = Process.GetProcessesByName("DEMO_f");
+            if(ps.Length>0)
+            ps[0].Kill();
             System.Environment.Exit(0);
         }
     }
