@@ -9,6 +9,7 @@
 #include <iostream>
 #include <cstring>
 #include "Leap.h"
+#include"MapChange.h"
 
 using namespace Leap;
 
@@ -49,61 +50,69 @@ void SampleListener::onExit(const Controller& controller) {
   std::cout << "Exited" << std::endl;
 }
 
-void SampleListener::onFrame(const Controller& controller) {
-  // Get the most recent frame and report some basic information
-  const Frame frame = controller.frame();
-  std::cout << "Frame id: " << frame.id()
-            << ", timestamp: " << frame.timestamp()
-            << ", hands: " << frame.hands().count()
-            << ", extended fingers: " << frame.fingers().extended().count() << std::endl;
+void SampleListener::onFrame(const Controller& controller) 
+{
+	Mapchange mp;
+	const Frame frame = controller.frame(); //获取设备的此时刻的帧
+	HandList hands = frame.hands();         //获取该帧中的手的列表
+	for (HandList::const_iterator hl = hands.begin(); hl != hands.end(); ++hl) 
+	{
+		//遍历手的列表
 
-  HandList hands = frame.hands();
-  for (HandList::const_iterator hl = hands.begin(); hl != hands.end(); ++hl) {
-    // Get the first hand
-    const Hand hand = *hl;
-    std::string handType = hand.isLeft() ? "Left hand" : "Right hand";
-    std::cout << std::string(2, ' ') << handType << ", id: " << hand.id()
-              << ", palm position: " << hand.palmPosition() << std::endl;
-    // Get the hand's normal vector and direction
-    const Vector normal = hand.palmNormal();
-    const Vector direction = hand.direction();
+		const Hand hand = *hl; //将获得的手赋给hand
 
-    // Calculate the hand's pitch, roll, and yaw angles
-    std::cout << std::string(2, ' ') <<  "pitch: " << direction.pitch() * RAD_TO_DEG << " degrees, "
-              << "roll: " << normal.roll() * RAD_TO_DEG << " degrees, "
-              << "yaw: " << direction.yaw() * RAD_TO_DEG << " degrees" << std::endl;
+		if (hand.isRight()) 
+		{
+			//判断是否为右手
+			const FingerList fingers = hand.fingers(); //获取手指列表
+			const Finger finger0 = fingers[0];         //获取拇指
+			const Finger finger1 = fingers[1];         //获取食指
+			const Finger finger2 = fingers[2];         //获取中指
+			const Finger finger3 = fingers[3];         //获取无名指
+			const Finger finger4 = fingers[4];         //获取小指
+			Vector handSpeed = hand.palmVelocity();    //获取手掌的速度向量
+			Vector handCenter = hand.palmPosition();   //获取手掌中心的位置坐标
 
-    // Get the Arm bone
-    Arm arm = hand.arm();
-    std::cout << std::string(2, ' ') <<  "Arm direction: " << arm.direction()
-              << " wrist position: " << arm.wristPosition()
-              << " elbow position: " << arm.elbowPosition() << std::endl;
+			if (finger0.isExtended() && finger1.isExtended() && finger2.isExtended() && finger3.isExtended() && finger4.isExtended())
+			{
+				//判断五指是否都伸开
+				if (handCenter.z < -90)                     //手掌中心位置坐标z小于-90
+				{
+					mp.MapMoveup();                         //向上移动
+					cout << "向上" << handCenter.z << endl;
+				}
+				else if (handCenter.z > 90)
+				{
+					mp.MapMovewdown();
+					cout << "向下" << handCenter.z << endl;
+				}
+				if (handSpeed.y > 400 && handCenter.y>200)  //手掌速度向量y大于400并且手掌中心位置坐标y大于200
+				{
+					//mp.MapEnlarge();                        //放大
+					mp.MapNarrow();
+					cout << "放大" << handSpeed.y << endl;
+				}
+				else if (handSpeed.y < -400 && handCenter.y<100)
+				{
+					//mp.MapNarrow();
+					mp.MapEnlarge();
+					cout << "缩小" << handSpeed.y << endl;
+				}
+				if (handCenter.x > 90)
+				{
+					mp.MapMoveright();
+					cout << "向右" << handCenter.x << endl;
+				}
+				else if (handCenter.x < -100)
+				{
+					mp.MapMoveleft();
+					cout << "向左" << handCenter.x << endl;
+				}
 
-    // Get fingers
-    const FingerList fingers = hand.fingers();
-    for (FingerList::const_iterator fl = fingers.begin(); fl != fingers.end(); ++fl) {
-      const Finger finger = *fl;
-      std::cout << std::string(4, ' ') <<  fingerNames[finger.type()]
-                << " finger, id: " << finger.id()
-                << ", length: " << finger.length()
-                << "mm, width: " << finger.width() << std::endl;
+			}
 
-      // Get finger bones
-      for (int b = 0; b < 4; ++b) {
-        Bone::Type boneType = static_cast<Bone::Type>(b);
-        Bone bone = finger.bone(boneType);
-        std::cout << std::string(6, ' ') <<  boneNames[boneType]
-                  << " bone, start: " << bone.prevJoint()
-                  << ", end: " << bone.nextJoint()
-                  << ", direction: " << bone.direction() << std::endl;
-      }
-    }
-  }
-
-  if (!frame.hands().isEmpty()) {
-    std::cout << std::endl;
-  }
-
+		}
+	}
 }
 
 void SampleListener::onFocusGained(const Controller& controller) {

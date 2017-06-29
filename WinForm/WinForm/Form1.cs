@@ -46,7 +46,7 @@ namespace WinForm
             if(!pflag&&this.Exe_Panel.Created)
             {
                 p.Start();
-                System.Threading.Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(2000);
                 SetParent(p.MainWindowHandle, this.Exe_Panel.Handle);
                 ShowWindow(p.MainWindowHandle, 3);
                 pflag = true;
