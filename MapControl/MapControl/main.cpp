@@ -44,12 +44,14 @@ int main()
 					}
 					if (handSpeed.y > 400 && handCenter.y>200)  //手掌速度向量y大于400并且手掌中心位置坐标y大于200
 					{
-						mp.MapEnlarge();                        //放大
+						//mp.MapEnlarge();   //放大
+						mp.MapNarrow();
 						cout << "放大" << handSpeed.y << endl;
 					}
 					else if (handSpeed.y < -400 &&handCenter.y<100 )
 					{
-						mp.MapNarrow();
+						//mp.MapNarrow();
+						mp.MapEnlarge();
 						cout << "缩小" << handSpeed.y << endl;
 					}
 					if (handCenter.x > 90)
