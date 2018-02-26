@@ -1,8 +1,8 @@
 #ifndef MAPCHANGE_CPP
 #define MAPCHANGE_CPP
 #include "MapChange.h"
-#define ST 10
-#define DE 60
+#define ST 0
+#define DE 100
 
 int Mapchange::pre_dis = -1;
 int Mapchange::pre_y = -1;

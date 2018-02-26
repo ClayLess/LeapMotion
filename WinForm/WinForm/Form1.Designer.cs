@@ -1,4 +1,6 @@
-﻿namespace WinForm
+﻿using System;
+
+namespace WinForm
 {
     partial class MainForm
     {
@@ -100,6 +102,9 @@
             // 
             // LeapStatus
             // 
+            this.LeapStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.LeapStatus.AutoSize = true;
             this.LeapStatus.Location = new System.Drawing.Point(226, 599);
             this.LeapStatus.Name = "LeapStatus";
@@ -108,6 +113,7 @@
             // 
             // Exe_Panel
             // 
+            this.Exe_Panel.AutoSize = true;
             this.Exe_Panel.Location = new System.Drawing.Point(12, 12);
             this.Exe_Panel.Name = "Exe_Panel";
             this.Exe_Panel.Size = new System.Drawing.Size(640, 480);
@@ -127,6 +133,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(668, 654);
             this.Controls.Add(this.FingerList);
             this.Controls.Add(this.Exe_Panel);
@@ -143,13 +151,14 @@
             this.Text = "MainForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
+        
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label Compare_Label;
         private System.Windows.Forms.Label Eculid_Label;

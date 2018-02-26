@@ -14,6 +14,7 @@ namespace FormMethod
 {
     class FormHandCompare
     {
+        //create background listenning thread
         public FormHandCompare()
         {
             using (ctrl = new Controller())
@@ -24,23 +25,26 @@ namespace FormMethod
             runflag = false;
             Answer_Fingers = new string[5];
         }
+        //run thread 
         public void StartListen()
         {
+            //runflag to make sure just 1 delegate in the ctrl.FrameReady queue
             if (!runflag)
             {
                 ctrl.FrameReady += ll.OnFrame;
                 runflag = true;
-                ThreadLeapListener = new Thread(ListeningThread);
+                ThreadLeapListener = new Thread(ListeningThread);//set new listening thread
                 ThreadLeapListener.IsBackground = true;
                 ThreadLeapListener.Start();
             }
         }
+
         public void StopListen()
         {
+            //
             if (runflag)
             {
                 runflag = false;
-                //ThreadLeapListener.Abort();
                 ctrl.FrameReady -= ll.OnFrame;
             }
         }
@@ -77,6 +81,8 @@ namespace FormMethod
                 }
             }
         }
+
+        //return resault to mainform
         public void WriteToForm()
         {
             try
@@ -123,33 +129,23 @@ namespace FormMethod
             foreach (string str in text)
             {
                 tb.Items.Add(str);
-                /*
-                ListViewItem lvi = new ListViewItem();
-                lvi.SubItems.Clear();
-                if (str != null)
-                {
-                    string[] s = str.Split(" ".ToCharArray());
-                    lvi.SubItems[0].Text=s[0];
-                    lvi.SubItems.Add(s[1]);
-                    tb.Items.Add(str);
-                }
-                */
             }
         }
-        private Controller ctrl;
-        private LeapListener ll;
-        private Thread ThreadLeapListener;
-        public string Answer;
-        public int Answer_Euclid;
-        public int Answer_Compare;
-        public int Answer_Dot_Product;
-        //fingers
-        public string[] Answer_Fingers;
-        public bool changeflag;
-        public bool runflag;
+        private Controller ctrl;//leap motion controller
+        private LeapListener ll;//leap motion listener
+        private Thread ThreadLeapListener;//background run listenning thread
+        //Answer (data wait to write to main form)
+        public string Answer;//message shows on form
+        public int Answer_Euclid;//plus euclidean distance
+        public int Answer_Compare;//plus distance
+        public int Answer_Dot_Product;//plus dot product
+        public string[] Answer_Fingers;//per finger
+        public bool changeflag;//data change sign
+        public bool runflag;//thread run sign
         public delegate void Chang_Text(TextBox tb, string text);
         public delegate void Chang_Lab(Label tb, string text);
         public delegate void Chang_List(ListView tb, string[] text);
+        //name of controller on form
         private string FormName;
         private string Ctrl_Compare;
         private string Ctrl_Euclid;
@@ -160,35 +156,41 @@ namespace FormMethod
     {
         public LeapListener()
         {
-            Answer_Euclid = 0;
-            Answer_Compare = 0;
-            Answer_Dot_Product = 0;
-            changeflag = false;
+            Answer_Euclid = 0;//
+            Answer_Compare = 0;//
+            Answer_Dot_Product = 0;//
+            changeflag = false;//data change flag
             answer = "";
             Answer_Fingers = new string[5];
         }
+
+        //action on every frame.
         public void OnFrame(object sender, FrameEventArgs args)
         {
             // Get the most recent frame and report some basic information
             Frame frame = args.frame;
-            
+
+            //virtual hand test
+            //VirtualHand.AddHand(ref frame, VirtualHand.getHand());
+            //works when 2 hands in the hans pool
             if (frame.Hands.Count == 2)
             {
                 
                 HKD0.Load(frame.Hands[0]);
                 HKD1.Load(frame.Hands[1]);
                 HKD0.Transform(HKD0.GetRIMatrix());
+                //the same side then just transform
                 if (frame.Hands[0].IsLeft == frame.Hands[1].IsLeft)
                 {
                     HKD1.Transform(HKD1.GetRIMatrix());
                 }
+                //not the same then transform after mirror on x-axis
                 else
                 {
                     HKD1.Transform(HKD1.MirrorXRI());
                 }
                 Normalized.Hand_Normalized(ref HKD0, ref HKD1);
                 Compare_Method();
-                //
                 changeflag = true;
                 Thread.Sleep(10);
             }

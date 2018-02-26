@@ -317,6 +317,7 @@ namespace Leap
                                      new Vector(xBasis[1], yBasis[1], zBasis[1]),
                                      new Vector(xBasis[2], yBasis[2], zBasis[2]));
       rotInverse.origin = rotInverse.TransformDirection(-origin);
+
       return rotInverse;
     }
 

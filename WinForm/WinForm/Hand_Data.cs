@@ -13,15 +13,14 @@ namespace HandDatas
                 Finger_[i] = new FingerKeyData();
             }
         }
+        //copy data from class Hand (3-level depth recursion)
         public void Load(Hand hand)
         {
 
             Finger_Count = hand.Fingers.Count;
-            //Finger_ = new FingerKeyData[Finger_Count];
             int f = 0;
             foreach (Finger finger in hand.Fingers)
             {
-                //Finger_[f] = new FingerKeyData();
                 Finger_[f].Load(finger);
                 f++;
             }
@@ -29,18 +28,20 @@ namespace HandDatas
             PalmPosition = hand.PalmPosition;
             normal = hand.PalmNormal;
             direction = hand.Direction;
-            //rotation = hand.Rotation;
         }
+        //get the rigid matrix for mirror left hand to right one
         public Matrix MirrorXRI()
         {
             Vector handXBasis = normal.Cross(direction).Normalized;
             Vector handYBasis = normal;
             Vector handZBasis = direction;
+            //new center
             Vector handOri = PalmPosition;
             Matrix MX = new Matrix(handXBasis * -1, handYBasis, handZBasis, handOri);
             MX = MX.RigidInverse();
             return MX;
         }
+        //transform method
         public void Transform(Matrix M)
         {
             foreach (FingerKeyData tmp_fkd in Finger_)
@@ -51,6 +52,7 @@ namespace HandDatas
             normal = M.TransformDirection(normal);
             direction = M.TransformDirection(direction);
         }
+        //get the rigid matrix to transform coordinate system to palm position ,Z is hand direction, Y is the normal of the palm
         public Matrix GetRIMatrix()
         {
             Vector handXBasis = normal.Cross(direction).Normalized;
@@ -61,6 +63,7 @@ namespace HandDatas
             M = M.RigidInverse();
             return M;
         }
+        //overload method of GetRIMatrix() with Hand data input
         public Matrix GetRIMatrix(Hand hand)
         {
             Vector handXBasis = hand.PalmNormal.Cross(hand.Direction).Normalized;
@@ -71,14 +74,13 @@ namespace HandDatas
             M = M.RigidInverse();
             return M;
         }
-        //public FingerKeyData Test;
         public FingerKeyData[] Finger_;
         public int Finger_Count;
         public Vector PalmPosition;
         public Vector normal;
         public Vector direction;
-        //public LeapQuaternion rotation;
     }
+    //level-2 recursion
     public class FingerKeyData
     {
         public enum FingerType
@@ -107,7 +109,6 @@ namespace HandDatas
             for (int b = 0; b < 4; b++)
             {
                 bone = finger.Bone((Bone.BoneType)b);
-                //Bone_[b] = new BoneKeyData();
                 Bone_[b].Load(bone);
             }
             type = (FingerType)(int)finger.Type;
@@ -127,6 +128,7 @@ namespace HandDatas
         public Vector TipPosition;
         public FingerType type;
     }
+    //level-3 recursion
     public class BoneKeyData
     {
         public void Load(Bone bone)
@@ -145,6 +147,8 @@ namespace HandDatas
         public Vector NextJoint;
         public Vector Direction;
     }
+    //method for print
+    //translate the finger number to chinese finger name
     public static class FT_Extension
     {
         public static string ToChinese(this FingerKeyData.FingerType ft)
