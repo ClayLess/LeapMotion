@@ -17,6 +17,7 @@ namespace WinForm
     
     public partial class MainForm : Form
     {
+        
         [DllImport("User32.dll ", EntryPoint = "SetParent")]
         private static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
 
@@ -26,6 +27,7 @@ namespace WinForm
         private bool Listening_FLag;
         public Process p;
         public bool pflag;
+        public TcpClient connecter = new TcpClient();
         public MainForm()
         {
             InitializeComponent();
@@ -34,7 +36,7 @@ namespace WinForm
             Program.fhc.SetForm("MainForm", "Compare_Text","Eculid_Text", "DotMult_Text", "LeapStatus");
             //test
             p = new Process();
-            string path = Path.GetFullPath(".\\") + "DEMO_f.exe ";
+            string path = Path.GetFullPath(".\\") + "demo1.exe ";
             p.StartInfo.FileName = @path;
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Maximized;//加上这句效果更好
@@ -51,6 +53,7 @@ namespace WinForm
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
             if(!pflag&&this.Exe_Panel.Created)
             {
                 p.Start();
@@ -58,7 +61,9 @@ namespace WinForm
                 SetParent(p.MainWindowHandle, this.Exe_Panel.Handle);
                 ShowWindow(p.MainWindowHandle, 3);//push unity program into container
                 pflag = true;
+                connecter.InitSocket();
             }
+            
             if(Listening_FLag)
             {
                 button1.Text = "Resume";
@@ -77,13 +82,15 @@ namespace WinForm
         {
             this.FingerList.Columns.Add("Finger Name");
             this.FingerList.Columns.Add("Tip Distance");
+            //connecter.InitSocket();
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Process[] ps = Process.GetProcessesByName("DEMO_f");
+            //Process[] ps = Process.GetProcessesByName("DEMO_f");
+            Process[] ps = Process.GetProcessesByName("demo1");
             //if(ps.Length > 0)
-            foreach(Process p in ps)
+            foreach (Process p in ps)
             {
                 //ps[0].Kill();
                 p.Kill();
@@ -120,5 +127,18 @@ namespace WinForm
 
         private System.Drawing.Size BeforeResize;
         private Dictionary<String, Point> BasicDic = new Dictionary<string, Point>();
+        [DllImport("user32.dll")]
+        public static extern bool SetForegroundWindow(int hWnd);
+        private void 单手比较ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            connecter.SocketSend("1");
+            ShowWindow(p.Handle, 1);
+        }
+
+        private void 双手比较ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            connecter.SocketSend("0");
+        }
     }
 }

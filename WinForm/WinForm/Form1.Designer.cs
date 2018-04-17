@@ -40,6 +40,19 @@ namespace WinForm
             this.LeapStatus = new System.Windows.Forms.Label();
             this.Exe_Panel = new System.Windows.Forms.Panel();
             this.FingerList = new System.Windows.Forms.ListView();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.比较模式ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.单手比较ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.双手比较ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.数据库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.下载数据库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.重置并上传数据库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.新建条目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.从LeapMotion读取ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.手动输入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.删改条目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.启动场景ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -114,9 +127,9 @@ namespace WinForm
             // Exe_Panel
             // 
             this.Exe_Panel.AutoSize = true;
-            this.Exe_Panel.Location = new System.Drawing.Point(12, 12);
+            this.Exe_Panel.Location = new System.Drawing.Point(12, 36);
             this.Exe_Panel.Name = "Exe_Panel";
-            this.Exe_Panel.Size = new System.Drawing.Size(640, 480);
+            this.Exe_Panel.Size = new System.Drawing.Size(640, 456);
             this.Exe_Panel.TabIndex = 8;
             // 
             // FingerList
@@ -129,12 +142,105 @@ namespace WinForm
             this.FingerList.UseCompatibleStateImageBehavior = false;
             this.FingerList.View = System.Windows.Forms.View.Tile;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.比较模式ToolStripMenuItem,
+            this.数据库ToolStripMenuItem,
+            this.启动场景ToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(668, 25);
+            this.menuStrip1.TabIndex = 11;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // 比较模式ToolStripMenuItem
+            // 
+            this.比较模式ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.单手比较ToolStripMenuItem,
+            this.双手比较ToolStripMenuItem});
+            this.比较模式ToolStripMenuItem.Name = "比较模式ToolStripMenuItem";
+            this.比较模式ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.比较模式ToolStripMenuItem.Text = "比较模式";
+            // 
+            // 单手比较ToolStripMenuItem
+            // 
+            this.单手比较ToolStripMenuItem.Name = "单手比较ToolStripMenuItem";
+            this.单手比较ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.单手比较ToolStripMenuItem.Text = "单手比较";
+            this.单手比较ToolStripMenuItem.Click += new System.EventHandler(this.单手比较ToolStripMenuItem_Click);
+            // 
+            // 双手比较ToolStripMenuItem
+            // 
+            this.双手比较ToolStripMenuItem.Name = "双手比较ToolStripMenuItem";
+            this.双手比较ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.双手比较ToolStripMenuItem.Text = "双手比较";
+            this.双手比较ToolStripMenuItem.Click += new System.EventHandler(this.双手比较ToolStripMenuItem_Click);
+            // 
+            // 数据库ToolStripMenuItem
+            // 
+            this.数据库ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.下载数据库ToolStripMenuItem,
+            this.重置并上传数据库ToolStripMenuItem,
+            this.新建条目ToolStripMenuItem,
+            this.删改条目ToolStripMenuItem});
+            this.数据库ToolStripMenuItem.Name = "数据库ToolStripMenuItem";
+            this.数据库ToolStripMenuItem.Size = new System.Drawing.Size(56, 21);
+            this.数据库ToolStripMenuItem.Text = "数据库";
+            // 
+            // 下载数据库ToolStripMenuItem
+            // 
+            this.下载数据库ToolStripMenuItem.Name = "下载数据库ToolStripMenuItem";
+            this.下载数据库ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.下载数据库ToolStripMenuItem.Text = "下载数据库";
+            // 
+            // 重置并上传数据库ToolStripMenuItem
+            // 
+            this.重置并上传数据库ToolStripMenuItem.Name = "重置并上传数据库ToolStripMenuItem";
+            this.重置并上传数据库ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.重置并上传数据库ToolStripMenuItem.Text = "重置并上传数据库";
+            // 
+            // 新建条目ToolStripMenuItem
+            // 
+            this.新建条目ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.从LeapMotion读取ToolStripMenuItem,
+            this.手动输入ToolStripMenuItem});
+            this.新建条目ToolStripMenuItem.Name = "新建条目ToolStripMenuItem";
+            this.新建条目ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.新建条目ToolStripMenuItem.Text = "新建条目";
+            // 
+            // 从LeapMotion读取ToolStripMenuItem
+            // 
+            this.从LeapMotion读取ToolStripMenuItem.Name = "从LeapMotion读取ToolStripMenuItem";
+            this.从LeapMotion读取ToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.从LeapMotion读取ToolStripMenuItem.Text = "从LeapMotion读取";
+            // 
+            // 手动输入ToolStripMenuItem
+            // 
+            this.手动输入ToolStripMenuItem.Name = "手动输入ToolStripMenuItem";
+            this.手动输入ToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.手动输入ToolStripMenuItem.Text = "手动输入";
+            // 
+            // 删改条目ToolStripMenuItem
+            // 
+            this.删改条目ToolStripMenuItem.Name = "删改条目ToolStripMenuItem";
+            this.删改条目ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.删改条目ToolStripMenuItem.Text = "删改条目";
+            // 
+            // 启动场景ToolStripMenuItem
+            // 
+            this.启动场景ToolStripMenuItem.Name = "启动场景ToolStripMenuItem";
+            this.启动场景ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.启动场景ToolStripMenuItem.Text = "启动场景";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(668, 654);
             this.Controls.Add(this.FingerList);
             this.Controls.Add(this.Exe_Panel);
@@ -146,12 +252,18 @@ namespace WinForm
             this.Controls.Add(this.Eculid_Label);
             this.Controls.Add(this.Compare_Label);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.menuStrip1);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.IsMdiContainer = true;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,6 +281,18 @@ namespace WinForm
         private System.Windows.Forms.Label LeapStatus;
         private System.Windows.Forms.Panel Exe_Panel;
         private System.Windows.Forms.ListView FingerList;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 比较模式ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 单手比较ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 双手比较ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 数据库ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 下载数据库ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 重置并上传数据库ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 新建条目ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 从LeapMotion读取ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 手动输入ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 删改条目ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 启动场景ToolStripMenuItem;
     }
 }
 
