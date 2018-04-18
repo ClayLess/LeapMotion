@@ -69,6 +69,7 @@
     <Compile Include="ArmSql.cs" />
     <Compile Include="BoneSql.cs" />
     <Compile Include="FingerSql.cs" />
+    <Compile Include="HandSql.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
