@@ -10,7 +10,9 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.IO;
-
+using LeapSql;
+using Leap;
+using MySql.Data.MySqlClient;
 
 namespace WinForm
 {
@@ -28,6 +30,7 @@ namespace WinForm
         public Process p;
         public bool pflag;
         public TcpClient connecter = new TcpClient();
+        public string DBinfo = "server=localhost;User Id=root;password=123456;Database=test1";
         public MainForm()
         {
             InitializeComponent();
@@ -133,12 +136,27 @@ namespace WinForm
         {
 
             connecter.SocketSend("1");
-            ShowWindow(p.Handle, 1);
+            //ShowWindow(p.Handle, 1);
         }
 
         private void 双手比较ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             connecter.SocketSend("0");
+        }
+
+        private void 从LeapMotion读取ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Hand hand = Program.fhc.ll.handspool[0];
+            HandSql hs = new HandSql(new MySqlConnection(DBinfo));
+            hs.hand = hand;
+            hs.AddHand2DB();
+        }
+
+        private void 数据库连接信息ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DB_Connecter subform = new DB_Connecter();
+            subform.Owner = this;
+            subform.Show();
         }
     }
 }

@@ -159,5 +159,23 @@ namespace LeapSql
             }
             mscon.Close();
         }
+        public void AddHand2DB()
+        {
+            int id;
+            mscon.Open();
+            string msg = "select max(hand_id) from hand;";
+            MySqlCommand mscmd = new MySqlCommand(msg, mscon);
+            MySqlDataReader reader = mscmd.ExecuteReader();
+            if(reader.Read())
+            {
+                id = reader.GetInt32(0) + 1;
+            }
+            else
+            {
+                id = 1;
+            }
+            mscon.Close();
+            AddHand2DB(id);
+        }
     }
 }

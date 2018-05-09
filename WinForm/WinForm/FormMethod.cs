@@ -132,7 +132,7 @@ namespace FormMethod
             }
         }
         private Controller ctrl;//leap motion controller
-        private LeapListener ll;//leap motion listener
+        public LeapListener ll;//leap motion listener
         private Thread ThreadLeapListener;//background run listenning thread
         //Answer (data wait to write to main form)
         public string Answer;//message shows on form
@@ -169,7 +169,7 @@ namespace FormMethod
         {
             // Get the most recent frame and report some basic information
             Frame frame = args.frame;
-
+            handspool = frame.Hands.ToArray();
             //virtual hand test
             //VirtualHand.AddHand(ref frame, VirtualHand.getHand());
             //works when 2 hands in the hans pool
@@ -258,5 +258,6 @@ namespace FormMethod
         public int Answer_Dot_Product;
         public string[] Answer_Fingers;
         public bool changeflag;
+        public Hand[] handspool;
     }
 }

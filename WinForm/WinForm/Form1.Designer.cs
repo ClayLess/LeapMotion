@@ -51,6 +51,7 @@ namespace WinForm
             this.从LeapMotion读取ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.手动输入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删改条目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.数据库连接信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.启动场景ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -166,14 +167,14 @@ namespace WinForm
             // 单手比较ToolStripMenuItem
             // 
             this.单手比较ToolStripMenuItem.Name = "单手比较ToolStripMenuItem";
-            this.单手比较ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.单手比较ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.单手比较ToolStripMenuItem.Text = "单手比较";
             this.单手比较ToolStripMenuItem.Click += new System.EventHandler(this.单手比较ToolStripMenuItem_Click);
             // 
             // 双手比较ToolStripMenuItem
             // 
             this.双手比较ToolStripMenuItem.Name = "双手比较ToolStripMenuItem";
-            this.双手比较ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.双手比较ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.双手比较ToolStripMenuItem.Text = "双手比较";
             this.双手比较ToolStripMenuItem.Click += new System.EventHandler(this.双手比较ToolStripMenuItem_Click);
             // 
@@ -183,7 +184,8 @@ namespace WinForm
             this.下载数据库ToolStripMenuItem,
             this.重置并上传数据库ToolStripMenuItem,
             this.新建条目ToolStripMenuItem,
-            this.删改条目ToolStripMenuItem});
+            this.删改条目ToolStripMenuItem,
+            this.数据库连接信息ToolStripMenuItem});
             this.数据库ToolStripMenuItem.Name = "数据库ToolStripMenuItem";
             this.数据库ToolStripMenuItem.Size = new System.Drawing.Size(56, 21);
             this.数据库ToolStripMenuItem.Text = "数据库";
@@ -214,6 +216,7 @@ namespace WinForm
             this.从LeapMotion读取ToolStripMenuItem.Name = "从LeapMotion读取ToolStripMenuItem";
             this.从LeapMotion读取ToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.从LeapMotion读取ToolStripMenuItem.Text = "从LeapMotion读取";
+            this.从LeapMotion读取ToolStripMenuItem.Click += new System.EventHandler(this.从LeapMotion读取ToolStripMenuItem_Click);
             // 
             // 手动输入ToolStripMenuItem
             // 
@@ -226,6 +229,13 @@ namespace WinForm
             this.删改条目ToolStripMenuItem.Name = "删改条目ToolStripMenuItem";
             this.删改条目ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.删改条目ToolStripMenuItem.Text = "删改条目";
+            // 
+            // 数据库连接信息ToolStripMenuItem
+            // 
+            this.数据库连接信息ToolStripMenuItem.Name = "数据库连接信息ToolStripMenuItem";
+            this.数据库连接信息ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.数据库连接信息ToolStripMenuItem.Text = "数据库连接信息";
+            this.数据库连接信息ToolStripMenuItem.Click += new System.EventHandler(this.数据库连接信息ToolStripMenuItem_Click);
             // 
             // 启动场景ToolStripMenuItem
             // 
@@ -293,6 +303,7 @@ namespace WinForm
         private System.Windows.Forms.ToolStripMenuItem 手动输入ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 删改条目ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 启动场景ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 数据库连接信息ToolStripMenuItem;
     }
 }
 
