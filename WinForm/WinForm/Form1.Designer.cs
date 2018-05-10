@@ -50,6 +50,9 @@ namespace WinForm
             this.删改条目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据库连接信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StartSene = new System.Windows.Forms.ToolStripMenuItem();
+            this.VHand_name_Label = new System.Windows.Forms.Label();
+            this.VHand_Name_TextBox = new System.Windows.Forms.TextBox();
+            this.UpLoad_Button = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,7 +110,7 @@ namespace WinForm
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LeapStatus.AutoSize = true;
-            this.LeapStatus.Location = new System.Drawing.Point(226, 599);
+            this.LeapStatus.Location = new System.Drawing.Point(111, 624);
             this.LeapStatus.Name = "LeapStatus";
             this.LeapStatus.Size = new System.Drawing.Size(0, 12);
             this.LeapStatus.TabIndex = 7;
@@ -138,7 +141,7 @@ namespace WinForm
             this.StartSene});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(668, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(664, 25);
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -154,14 +157,14 @@ namespace WinForm
             // 单手比较ToolStripMenuItem
             // 
             this.单手比较ToolStripMenuItem.Name = "单手比较ToolStripMenuItem";
-            this.单手比较ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.单手比较ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.单手比较ToolStripMenuItem.Text = "单手比较";
             this.单手比较ToolStripMenuItem.Click += new System.EventHandler(this.单手比较ToolStripMenuItem_Click);
             // 
             // 双手比较ToolStripMenuItem
             // 
             this.双手比较ToolStripMenuItem.Name = "双手比较ToolStripMenuItem";
-            this.双手比较ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.双手比较ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.双手比较ToolStripMenuItem.Text = "双手比较";
             this.双手比较ToolStripMenuItem.Click += new System.EventHandler(this.双手比较ToolStripMenuItem_Click);
             // 
@@ -216,6 +219,32 @@ namespace WinForm
             this.StartSene.Text = "启动场景";
             this.StartSene.Click += new System.EventHandler(this.启动场景ToolStripMenuItem_Click);
             // 
+            // VHand_name_Label
+            // 
+            this.VHand_name_Label.AutoSize = true;
+            this.VHand_name_Label.Location = new System.Drawing.Point(51, 600);
+            this.VHand_name_Label.Name = "VHand_name_Label";
+            this.VHand_name_Label.Size = new System.Drawing.Size(107, 12);
+            this.VHand_name_Label.TabIndex = 13;
+            this.VHand_name_Label.Text = "Virtual Hand Name";
+            // 
+            // VHand_Name_TextBox
+            // 
+            this.VHand_Name_TextBox.Location = new System.Drawing.Point(183, 597);
+            this.VHand_Name_TextBox.Name = "VHand_Name_TextBox";
+            this.VHand_Name_TextBox.Size = new System.Drawing.Size(100, 21);
+            this.VHand_Name_TextBox.TabIndex = 14;
+            // 
+            // UpLoad_Button
+            // 
+            this.UpLoad_Button.Location = new System.Drawing.Point(290, 619);
+            this.UpLoad_Button.Name = "UpLoad_Button";
+            this.UpLoad_Button.Size = new System.Drawing.Size(75, 23);
+            this.UpLoad_Button.TabIndex = 15;
+            this.UpLoad_Button.Text = "Upload";
+            this.UpLoad_Button.UseVisualStyleBackColor = true;
+            this.UpLoad_Button.Click += new System.EventHandler(this.UpLoad_Button_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -224,7 +253,10 @@ namespace WinForm
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(668, 654);
+            this.ClientSize = new System.Drawing.Size(664, 654);
+            this.Controls.Add(this.UpLoad_Button);
+            this.Controls.Add(this.VHand_Name_TextBox);
+            this.Controls.Add(this.VHand_name_Label);
             this.Controls.Add(this.FingerList);
             this.Controls.Add(this.Exe_Panel);
             this.Controls.Add(this.LeapStatus);
@@ -272,6 +304,9 @@ namespace WinForm
         private System.Windows.Forms.ToolStripMenuItem 删改条目ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem StartSene;
         private System.Windows.Forms.ToolStripMenuItem 数据库连接信息ToolStripMenuItem;
+        private System.Windows.Forms.Label VHand_name_Label;
+        private System.Windows.Forms.TextBox VHand_Name_TextBox;
+        private System.Windows.Forms.Button UpLoad_Button;
     }
 }
 

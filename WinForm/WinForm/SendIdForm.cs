@@ -19,12 +19,16 @@ namespace WinForm
 
         private void ComfirmButton_Click(object sender, EventArgs e)
         {
+            int id = int.Parse(HandId_textBox.Text);
             DialogResult dr = MessageBox.Show(this,"你希望发送的ID是"+HandId_textBox.Text,"Warning!",MessageBoxButtons.OKCancel);
-            if (dr.Equals(DialogResult.Yes))
+            if (dr.Equals(DialogResult.OK))
             {
                 MainForm father = (MainForm)this.Owner;
                 father.connecter.SocketSend("1");
                 father.connecter.SocketSend(HandId_textBox.Text);
+                father.handsql.GetHandFromDB(id);
+                father.hb.hand = father.handsql.hand;
+                father.hb.hand_id = id;
                 this.Close();
             }
         }

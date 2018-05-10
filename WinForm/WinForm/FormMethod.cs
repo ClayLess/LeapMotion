@@ -151,9 +151,13 @@ namespace FormMethod
         private string Ctrl_Euclid;
         private string Ctrl_DotMult;
         private string Ctrl_Answer;
+        //virtual hand
+        
     }
     public class LeapListener
     {
+        public bool vhand_flag = false;
+        public Hand vhand;
         public LeapListener()
         {
             Answer_Euclid = 0;//
@@ -170,8 +174,11 @@ namespace FormMethod
             // Get the most recent frame and report some basic information
             Frame frame = args.frame;
             handspool = frame.Hands.ToArray();
-            //virtual hand test
-            //VirtualHand.AddHand(ref frame, VirtualHand.getHand());
+            //add virtual hand
+            if (vhand_flag)
+            {
+                VirtualHand.AddHand(ref frame, vhand);
+            }
             //works when 2 hands in the hans pool
             if (frame.Hands.Count == 2)
             {

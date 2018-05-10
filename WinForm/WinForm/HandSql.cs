@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace LeapSql
 {
-    class HandSql
+    public class HandSql
     {
         public Hand hand;
         public MySqlConnection mscon;
@@ -159,10 +159,10 @@ namespace LeapSql
             }
             mscon.Close();
         }
-        public void AddHand2DB()
+        public int AddHand2DB()
         {
-            int id;
-            mscon.Open();
+            int id=-1;
+            /*
             string msg = "select max(hand_id) from hand;";
             MySqlCommand mscmd = new MySqlCommand(msg, mscon);
             MySqlDataReader reader = mscmd.ExecuteReader();
@@ -175,7 +175,28 @@ namespace LeapSql
                 id = 1;
             }
             mscon.Close();
+            */
+            id = FindNextId();
             AddHand2DB(id);
+            return id;
+        }
+        public int FindNextId()
+        {
+            int id = -1;
+            mscon.Open();
+            string msg = "select max(hand_id) from hand;";
+            MySqlCommand mscmd = new MySqlCommand(msg, mscon);
+            MySqlDataReader reader = mscmd.ExecuteReader();
+            if (reader.Read())
+            {
+                id = reader.GetInt32(0) + 1;
+            }
+            else
+            {
+                id = 1;
+            }
+            mscon.Close();
+            return id;
         }
     }
 }

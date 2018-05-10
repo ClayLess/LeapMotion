@@ -32,6 +32,25 @@ namespace WinForm
         public TcpClient connecter = new TcpClient();
         public string DBinfo = "server=localhost;User Id=root;password=123456;Database=test1";
         private TextBox Hand_Description;
+        public Hand_Buffer hb = new Hand_Buffer();
+        public HandSql handsql = new HandSql();
+
+        //存放手信息
+        public  class Hand_Buffer
+        {
+            public Hand hand;
+            public string hand_name;
+            public int hand_id;
+            public void ShowHand(bool new_flag)
+            {
+                Program.fhc.ll.vhand_flag = new_flag;
+            }
+            public void SetHand()
+            {
+                Program.fhc.ll.vhand = this.hand;
+            }
+        }
+        
         public MainForm()
         {
             InitializeComponent();
@@ -57,7 +76,9 @@ namespace WinForm
             Hand_Description.Location = new Point(430,500);
             Hand_Description.Size = new Size(200, 100);
             Hand_Description.ReadOnly = false;
-            Hand_Description.Hide();
+            
+            this.Controls.Add(Hand_Description);
+            
         }
         /*
         private void button1_Click(object sender, EventArgs e)
@@ -91,6 +112,8 @@ namespace WinForm
         {
             this.FingerList.Columns.Add("Finger Name");
             this.FingerList.Columns.Add("Tip Distance");
+            handsql.mscon = new MySqlConnection(DBinfo);
+            Show_Mode2();
             //connecter.InitSocket();
         }
 
@@ -143,11 +166,20 @@ namespace WinForm
             SendIdForm sif = new SendIdForm();
             sif.Owner = this;
             sif.Show();
+            while(sif.IsAccessible)
+            {
+
+            }
+            hb.ShowHand(true);
+            hb.SetHand();
+            Show_Mode1();
         }
 
         private void 双手比较ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             connecter.SocketSend("2");
+            Show_Mode2();
+            hb.ShowHand(false);
         }
 
         private void 从LeapMotion读取ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -193,7 +225,8 @@ namespace WinForm
 
         private void 新建条目ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            hb.ShowHand(false);
+            Show_Mode3();//进入上传模式
         }
         private void Show_Mode1()//单手比较模式
         {
@@ -205,6 +238,13 @@ namespace WinForm
             DotMult_Lable.Show();
             DotMult_Text.Show();
             FingerList.Show();
+            LeapStatus.Show();
+            VHand_name_Label.Show();
+            VHand_Name_TextBox.Show();
+            VHand_Name_TextBox.Text = hb.hand_name;
+            VHand_Name_TextBox.ReadOnly = true;
+            Hand_Description.Hide();
+            UpLoad_Button.Hide();
         }
         private void Show_Mode2()//双手比较模式
         {
@@ -216,6 +256,11 @@ namespace WinForm
             DotMult_Lable.Show();
             DotMult_Text.Show();
             FingerList.Show();
+            LeapStatus.Show();
+            VHand_name_Label.Hide();
+            VHand_Name_TextBox.Hide();
+            Hand_Description.Hide();
+            UpLoad_Button.Hide();
         }
         private void Show_Mode3()//存储模式
         {
@@ -226,6 +271,25 @@ namespace WinForm
             DotMult_Lable.Hide();
             DotMult_Text.Hide();
             FingerList.Hide();
+            VHand_name_Label.Show();
+            VHand_Name_TextBox.Show();
+            VHand_Name_TextBox.Text = "";
+            VHand_Name_TextBox.ReadOnly = false;
+            Hand_Description.Show();
+            Hand_Description.ReadOnly = false;
+            UpLoad_Button.Show();
+        }
+
+        private void UpLoad_Button_Click(object sender, EventArgs e)
+        {
+            Hand tmp = Program.fhc.ll.handspool[0];
+            DialogResult dr = MessageBox.Show(this,"Do you want to Upload this hand "+VHand_Name_TextBox +" as ID:"+ handsql.FindNextId(),"Upload Comfirm",MessageBoxButtons.OKCancel);
+            if(dr.Equals(DialogResult.OK))
+            {
+                hb.hand = tmp;
+                handsql.hand = hb.hand;
+                hb.hand_id = handsql.AddHand2DB();
+            }
         }
     }
 }
