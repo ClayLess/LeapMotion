@@ -136,12 +136,13 @@ namespace WinForm
         {
 
             connecter.SocketSend("1");
+            //MessageBox.Show();
             //ShowWindow(p.Handle, 1);
         }
 
         private void 双手比较ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            connecter.SocketSend("0");
+            connecter.SocketSend("2");
         }
 
         private void 从LeapMotion读取ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -157,6 +158,32 @@ namespace WinForm
             DB_Connecter subform = new DB_Connecter();
             subform.Owner = this;
             subform.Show();
+        }
+
+        private void 启动场景ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!pflag && this.Exe_Panel.Created)
+            {
+                p.Start();
+                System.Threading.Thread.Sleep(10000);
+                SetParent(p.MainWindowHandle, this.Exe_Panel.Handle);
+                ShowWindow(p.MainWindowHandle, 3);//push unity program into container
+                pflag = true;
+                connecter.InitSocket();
+            }
+
+            if (Listening_FLag)
+            {
+                StartSene.Text = "继续场景";
+                Listening_FLag = !Listening_FLag;
+                Program.fhc.StopListen();
+            }
+            else
+            {
+                StartSene.Text = "暂停场景";
+                Listening_FLag = !Listening_FLag;
+                Program.fhc.StartListen();
+            }
         }
     }
 }

@@ -52,7 +52,7 @@ namespace WinForm
             this.手动输入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删改条目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据库连接信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.启动场景ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.StartSene = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -148,7 +148,7 @@ namespace WinForm
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.比较模式ToolStripMenuItem,
             this.数据库ToolStripMenuItem,
-            this.启动场景ToolStripMenuItem});
+            this.StartSene});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(668, 25);
@@ -237,11 +237,12 @@ namespace WinForm
             this.数据库连接信息ToolStripMenuItem.Text = "数据库连接信息";
             this.数据库连接信息ToolStripMenuItem.Click += new System.EventHandler(this.数据库连接信息ToolStripMenuItem_Click);
             // 
-            // 启动场景ToolStripMenuItem
+            // StartSene
             // 
-            this.启动场景ToolStripMenuItem.Name = "启动场景ToolStripMenuItem";
-            this.启动场景ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.启动场景ToolStripMenuItem.Text = "启动场景";
+            this.StartSene.Name = "StartSene";
+            this.StartSene.Size = new System.Drawing.Size(68, 21);
+            this.StartSene.Text = "启动场景";
+            this.StartSene.Click += new System.EventHandler(this.启动场景ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -302,7 +303,7 @@ namespace WinForm
         private System.Windows.Forms.ToolStripMenuItem 从LeapMotion读取ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 手动输入ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 删改条目ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 启动场景ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem StartSene;
         private System.Windows.Forms.ToolStripMenuItem 数据库连接信息ToolStripMenuItem;
     }
 }

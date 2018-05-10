@@ -23,7 +23,7 @@ namespace WinForm
             MainForm father = (MainForm)this.Owner;
             father.DBinfo = DB_info;
             father.connecter.SocketSend("0");
-            father.connecter.SocketSend("DB_info");
+            father.connecter.SocketSend(DB_info);
             this.Close();
         }
     }
