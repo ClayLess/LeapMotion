@@ -69,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddHand2DB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddHand2DB.Designer.cs">
+      <DependentUpon>AddHand2DB.cs</DependentUpon>
+    </Compile>
     <Compile Include="ArmSql.cs" />
     <Compile Include="BoneSql.cs" />
     <Compile Include="Compare_Normalized.cs" />
@@ -91,8 +97,17 @@
     <Compile Include="Matrix.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SendIdForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SendIdForm.Designer.cs">
+      <DependentUpon>SendIdForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SocketConnecter.cs" />
     <Compile Include="VirtualHand.cs" />
+    <EmbeddedResource Include="AddHand2DB.resx">
+      <DependentUpon>AddHand2DB.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DB Connecter.resx">
       <DependentUpon>DB Connecter.cs</DependentUpon>
     </EmbeddedResource>
@@ -109,6 +124,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SendIdForm.resx">
+      <DependentUpon>SendIdForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

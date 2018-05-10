@@ -30,7 +30,6 @@ namespace WinForm
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
             this.Compare_Label = new System.Windows.Forms.Label();
             this.Eculid_Label = new System.Windows.Forms.Label();
             this.DotMult_Lable = new System.Windows.Forms.Label();
@@ -48,23 +47,11 @@ namespace WinForm
             this.下载数据库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.重置并上传数据库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.新建条目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.从LeapMotion读取ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.手动输入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删改条目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据库连接信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StartSene = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(298, 626);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Start";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Compare_Label
             // 
@@ -167,14 +154,14 @@ namespace WinForm
             // 单手比较ToolStripMenuItem
             // 
             this.单手比较ToolStripMenuItem.Name = "单手比较ToolStripMenuItem";
-            this.单手比较ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.单手比较ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.单手比较ToolStripMenuItem.Text = "单手比较";
             this.单手比较ToolStripMenuItem.Click += new System.EventHandler(this.单手比较ToolStripMenuItem_Click);
             // 
             // 双手比较ToolStripMenuItem
             // 
             this.双手比较ToolStripMenuItem.Name = "双手比较ToolStripMenuItem";
-            this.双手比较ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.双手比较ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.双手比较ToolStripMenuItem.Text = "双手比较";
             this.双手比较ToolStripMenuItem.Click += new System.EventHandler(this.双手比较ToolStripMenuItem_Click);
             // 
@@ -204,25 +191,10 @@ namespace WinForm
             // 
             // 新建条目ToolStripMenuItem
             // 
-            this.新建条目ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.从LeapMotion读取ToolStripMenuItem,
-            this.手动输入ToolStripMenuItem});
             this.新建条目ToolStripMenuItem.Name = "新建条目ToolStripMenuItem";
             this.新建条目ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.新建条目ToolStripMenuItem.Text = "新建条目";
-            // 
-            // 从LeapMotion读取ToolStripMenuItem
-            // 
-            this.从LeapMotion读取ToolStripMenuItem.Name = "从LeapMotion读取ToolStripMenuItem";
-            this.从LeapMotion读取ToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.从LeapMotion读取ToolStripMenuItem.Text = "从LeapMotion读取";
-            this.从LeapMotion读取ToolStripMenuItem.Click += new System.EventHandler(this.从LeapMotion读取ToolStripMenuItem_Click);
-            // 
-            // 手动输入ToolStripMenuItem
-            // 
-            this.手动输入ToolStripMenuItem.Name = "手动输入ToolStripMenuItem";
-            this.手动输入ToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.手动输入ToolStripMenuItem.Text = "手动输入";
+            this.新建条目ToolStripMenuItem.Click += new System.EventHandler(this.新建条目ToolStripMenuItem_Click);
             // 
             // 删改条目ToolStripMenuItem
             // 
@@ -262,7 +234,6 @@ namespace WinForm
             this.Controls.Add(this.DotMult_Lable);
             this.Controls.Add(this.Eculid_Label);
             this.Controls.Add(this.Compare_Label);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -281,8 +252,6 @@ namespace WinForm
         }
 
         #endregion
-        
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label Compare_Label;
         private System.Windows.Forms.Label Eculid_Label;
         private System.Windows.Forms.Label DotMult_Lable;
@@ -300,8 +269,6 @@ namespace WinForm
         private System.Windows.Forms.ToolStripMenuItem 下载数据库ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 重置并上传数据库ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 新建条目ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 从LeapMotion读取ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 手动输入ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 删改条目ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem StartSene;
         private System.Windows.Forms.ToolStripMenuItem 数据库连接信息ToolStripMenuItem;

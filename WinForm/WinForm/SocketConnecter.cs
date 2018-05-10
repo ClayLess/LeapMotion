@@ -109,6 +109,7 @@ namespace WinForm
             }
             //最后关闭服务器  
             if (serverSocket != null)
+                
                 serverSocket.Close();
             Console.WriteLine("diconnect");
         }

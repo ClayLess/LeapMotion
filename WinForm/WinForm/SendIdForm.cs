@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WinForm
+{
+    public partial class SendIdForm : Form
+    {
+        public SendIdForm()
+        {
+            InitializeComponent();
+        }
+
+        private void ComfirmButton_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show(this,"你希望发送的ID是"+HandId_textBox.Text,"Warning!",MessageBoxButtons.OKCancel);
+            if (dr.Equals(DialogResult.Yes))
+            {
+                MainForm father = (MainForm)this.Owner;
+                father.connecter.SocketSend("1");
+                father.connecter.SocketSend(HandId_textBox.Text);
+                this.Close();
+            }
+        }
+
+        private void HandId_textBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!(Char.IsNumber(e.KeyChar))&&e.KeyChar!=(char)8)
+            {
+                e.Handled = true;
+                MessageBox.Show("请输入数字！！！");
+            }
+            else
+            {
+                //MessageBox.Show("请输入数字！！！");
+            }
+        }
+    }
+}

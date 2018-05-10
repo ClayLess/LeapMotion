@@ -31,6 +31,7 @@ namespace WinForm
         public bool pflag;
         public TcpClient connecter = new TcpClient();
         public string DBinfo = "server=localhost;User Id=root;password=123456;Database=test1";
+        private TextBox Hand_Description;
         public MainForm()
         {
             InitializeComponent();
@@ -52,8 +53,13 @@ namespace WinForm
             Point p_size = new Point(this.Exe_Panel.Size.Width, this.Exe_Panel.Size.Height);
             BasicDic.Add(this.Exe_Panel.Name + "Size", p_size);
             //\end test
+            Hand_Description = new TextBox();
+            Hand_Description.Location = new Point(430,500);
+            Hand_Description.Size = new Size(200, 100);
+            Hand_Description.ReadOnly = false;
+            Hand_Description.Hide();
         }
-
+        /*
         private void button1_Click(object sender, EventArgs e)
         {
             
@@ -80,7 +86,7 @@ namespace WinForm
                 Program.fhc.StartListen();
             }
         }
-
+        */
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.FingerList.Columns.Add("Finger Name");
@@ -134,10 +140,9 @@ namespace WinForm
         public static extern bool SetForegroundWindow(int hWnd);
         private void 单手比较ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            connecter.SocketSend("1");
-            //MessageBox.Show();
-            //ShowWindow(p.Handle, 1);
+            SendIdForm sif = new SendIdForm();
+            sif.Owner = this;
+            sif.Show();
         }
 
         private void 双手比较ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -184,6 +189,43 @@ namespace WinForm
                 Listening_FLag = !Listening_FLag;
                 Program.fhc.StartListen();
             }
+        }
+
+        private void 新建条目ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void Show_Mode1()//单手比较模式
+        {
+            //
+            Compare_Label.Show();
+            Compare_Text.Show();
+            Eculid_Label.Show();
+            Eculid_Text.Show();
+            DotMult_Lable.Show();
+            DotMult_Text.Show();
+            FingerList.Show();
+        }
+        private void Show_Mode2()//双手比较模式
+        {
+            //
+            Compare_Label.Show();
+            Compare_Text.Show();
+            Eculid_Label.Show();
+            Eculid_Text.Show();
+            DotMult_Lable.Show();
+            DotMult_Text.Show();
+            FingerList.Show();
+        }
+        private void Show_Mode3()//存储模式
+        {
+            Compare_Label.Hide();
+            Compare_Text.Hide();
+            Eculid_Label.Hide();
+            Eculid_Text.Hide();
+            DotMult_Lable.Hide();
+            DotMult_Text.Hide();
+            FingerList.Hide();
         }
     }
 }
