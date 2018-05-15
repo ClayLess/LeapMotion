@@ -24,8 +24,8 @@ namespace WinForm
             if (dr.Equals(DialogResult.OK))
             {
                 MainForm father = (MainForm)this.Owner;
-                father.connecter.SocketSend("1");
-                father.connecter.SocketSend(HandId_textBox.Text);
+                father.connecter.SocketSend("1|"+ HandId_textBox.Text);
+                //father.connecter.SocketSend(HandId_textBox.Text);
                 father.handsql.GetHandFromDB(id);
                 father.hb.hand = father.handsql.hand;
                 father.hb.hand_id = id;

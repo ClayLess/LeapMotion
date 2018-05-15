@@ -207,6 +207,11 @@ namespace WinForm
                 ShowWindow(p.MainWindowHandle, 3);//push unity program into container
                 pflag = true;
                 connecter.InitSocket();
+                System.Threading.Thread.Sleep(100);
+                connecter.SocketSend("0|"+DBinfo);
+                System.Threading.Thread.Sleep(100);
+                connecter.SocketSend("2");
+                //connecter.SocketSend(DBinfo);
             }
 
             if (Listening_FLag)
@@ -290,6 +295,14 @@ namespace WinForm
                 handsql.hand = hb.hand;
                 hb.hand_id = handsql.AddHand2DB();
             }
+        }
+
+        private void 调试qidongToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            connecter.InitSocket();
+            System.Threading.Thread.Sleep(100);
+            connecter.SocketSend("0|"+DBinfo);
+            //connecter.SocketSend(DBinfo);
         }
     }
 }

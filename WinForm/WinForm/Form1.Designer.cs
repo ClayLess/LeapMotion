@@ -53,6 +53,7 @@ namespace WinForm
             this.VHand_name_Label = new System.Windows.Forms.Label();
             this.VHand_Name_TextBox = new System.Windows.Forms.TextBox();
             this.UpLoad_Button = new System.Windows.Forms.Button();
+            this.调试qidongToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,7 +139,8 @@ namespace WinForm
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.比较模式ToolStripMenuItem,
             this.数据库ToolStripMenuItem,
-            this.StartSene});
+            this.StartSene,
+            this.调试qidongToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(664, 25);
@@ -245,6 +247,13 @@ namespace WinForm
             this.UpLoad_Button.UseVisualStyleBackColor = true;
             this.UpLoad_Button.Click += new System.EventHandler(this.UpLoad_Button_Click);
             // 
+            // 调试qidongToolStripMenuItem
+            // 
+            this.调试qidongToolStripMenuItem.Name = "调试qidongToolStripMenuItem";
+            this.调试qidongToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.调试qidongToolStripMenuItem.Text = "调试启动";
+            this.调试qidongToolStripMenuItem.Click += new System.EventHandler(this.调试qidongToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -307,6 +316,7 @@ namespace WinForm
         private System.Windows.Forms.Label VHand_name_Label;
         private System.Windows.Forms.TextBox VHand_Name_TextBox;
         private System.Windows.Forms.Button UpLoad_Button;
+        private System.Windows.Forms.ToolStripMenuItem 调试qidongToolStripMenuItem;
     }
 }
 

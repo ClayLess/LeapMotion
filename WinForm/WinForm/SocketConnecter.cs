@@ -44,8 +44,7 @@ namespace WinForm
             ipEnd = new IPEndPoint(ip, port);
             connectThread = new Thread(new ThreadStart(SocketReceive));
             connectThread.Start();
-            connectThread = new Thread(new ThreadStart(SocketReceive));
-            connectThread.Start();
+            System.Threading.Thread.Sleep(100);
         }
         public void SocketConnet()
         {
