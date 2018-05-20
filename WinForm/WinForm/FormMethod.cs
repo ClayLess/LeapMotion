@@ -157,7 +157,7 @@ namespace FormMethod
     public class LeapListener
     {
         public bool vhand_flag = false;
-        public Hand vhand;
+        public Hand vhand = new Hand();
         public LeapListener()
         {
             Answer_Euclid = 0;//
@@ -173,7 +173,15 @@ namespace FormMethod
         {
             // Get the most recent frame and report some basic information
             Frame frame = args.frame;
-            handspool = frame.Hands.ToArray();
+            
+            if(copyflag)
+            {
+                nowHand0.CopyFrom(frame.Hands[0]);
+                copyflag = false;
+            }
+            //handspool.Initialize();
+            //handspool = frame.Hands.ToArray();
+            //frame.Hands.ToArray().CopyTo(handspool, 0);
             //add virtual hand
             if (vhand_flag)
             {
@@ -265,6 +273,18 @@ namespace FormMethod
         public int Answer_Dot_Product;
         public string[] Answer_Fingers;
         public bool changeflag;
-        public Hand[] handspool;
+        //public Hand[] handspool;
+        private Hand nowHand0;
+        private bool copyflag;
+        public Hand GetNowHand0()
+        {
+            nowHand0 = new Hand();
+            copyflag = true;
+            while(copyflag)
+            {
+                Thread.Sleep(1);
+            }
+            return nowHand0;
+        }
     }
 }

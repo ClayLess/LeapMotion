@@ -45,9 +45,15 @@ namespace WinForm
             {
                 Program.fhc.ll.vhand_flag = new_flag;
             }
+            public void SetHand(Hand h)
+            {
+                hand = new Hand();
+                hand.CopyFrom(h);
+                Program.fhc.ll.vhand.CopyFrom(h);
+            }
             public void SetHand()
             {
-                Program.fhc.ll.vhand = this.hand;
+                Program.fhc.ll.vhand.CopyFrom(this.hand);
             }
         }
         
@@ -186,7 +192,8 @@ namespace WinForm
 
         private void 从LeapMotion读取ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Hand hand = Program.fhc.ll.handspool[0];
+            //Hand hand = Program.fhc.ll.handspool[0];
+            Hand hand = Program.fhc.ll.GetNowHand0();
             HandSql hs = new HandSql(new MySqlConnection(DBinfo));
             hs.hand = hand;
             hs.AddHand2DB();
@@ -208,6 +215,7 @@ namespace WinForm
                 {
                     System.Threading.Thread.Sleep(1000);
                 }
+                
                 System.Threading.Thread.Sleep(10000);
                 SetParent(p.MainWindowHandle, this.Exe_Panel.Handle);
                 ShowWindow(p.MainWindowHandle, 3);//push unity program into container
@@ -219,6 +227,8 @@ namespace WinForm
                 System.Threading.Thread.Sleep(100);
                 connecter.SocketSend("2");
                 //connecter.SocketSend(DBinfo);
+                //Process[] ps = Process.GetProcessesByName("demo1");
+                //Process a = ps[0];
             }
 
             if (Listening_FLag)
@@ -294,7 +304,8 @@ namespace WinForm
 
         private void UpLoad_Button_Click(object sender, EventArgs e)
         {
-            Hand tmp = Program.fhc.ll.handspool[0];
+            Hand tmp = Program.fhc.ll.GetNowHand0();
+            //tmp.CopyFrom(Program.fhc.ll.handspool[0]);
             DialogResult dr = MessageBox.Show(this,"Do you want to Upload this hand "+VHand_Name_TextBox +" as ID:"+ handsql.FindNextId(),"Upload Comfirm",MessageBoxButtons.OKCancel);
             if(dr.Equals(DialogResult.OK))
             {

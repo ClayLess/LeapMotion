@@ -53,12 +53,14 @@ namespace Leap
             return hand;
         }
 
-        public static void AddHand(ref Frame frame, Hand _addHand)
+        public static void AddHand(ref Frame frame, Hand __addHand)
         {
+            Hand _addHand = new Hand();
+            _addHand.CopyFrom(__addHand);
             _addHand.FrameId = frame.Id;
-            if (frame.Hands.Count > 0)
+            if (frame.Hands.Count == 1)
             {
-                _addHand.Id = frame.Hands[0].Id - 1;
+                _addHand.Id = 1;
                 _addHand.TimeVisible = frame.Hands[0].TimeVisible;
             }
             foreach (Finger f in _addHand.Fingers)

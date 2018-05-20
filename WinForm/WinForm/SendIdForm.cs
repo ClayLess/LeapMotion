@@ -27,9 +27,9 @@ namespace WinForm
                 father.connecter.SocketSend("1|"+ HandId_textBox.Text);
                 //father.connecter.SocketSend(HandId_textBox.Text);
                 father.handsql.GetHandFromDB(id);
-                father.hb.hand = father.handsql.hand;
+                //father.hb.hand = father.handsql.hand;
                 father.hb.hand_id = id;
-                father.hb.SetHand();
+                father.hb.SetHand(father.handsql.hand);
                 father.hb.ShowHand(true);
                 this.Close();
             }

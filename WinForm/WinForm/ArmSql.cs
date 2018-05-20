@@ -36,10 +36,10 @@ namespace LeapSql
                     return false;
                 }
                 Arm buffer = new Arm(
-                    new Vector(reader.GetFloat(1), reader.GetFloat(2), reader.GetFloat(3)),
-                    new Vector(reader.GetFloat(4), reader.GetFloat(5), reader.GetFloat(6)),
-                    new Vector(reader.GetFloat(7), reader.GetFloat(8), reader.GetFloat(9)),
-                    new Vector(reader.GetFloat(10), reader.GetFloat(11), reader.GetFloat(12)),
+                    new Vector(reader.GetFloat(1), reader.GetFloat(2), reader.GetFloat(3)),//elbow
+                    new Vector(reader.GetFloat(4), reader.GetFloat(5), reader.GetFloat(6)),//wrist
+                    new Vector(reader.GetFloat(7), reader.GetFloat(8), reader.GetFloat(9)),//center
+                    new Vector(reader.GetFloat(10), reader.GetFloat(11), reader.GetFloat(12)),//direction
                     reader.GetFloat(13),
                     reader.GetFloat(14),
                     new LeapQuaternion(reader.GetFloat(15), reader.GetFloat(16), reader.GetFloat(17), reader.GetFloat(18))
@@ -53,35 +53,28 @@ namespace LeapSql
         public bool AddArm2DB(int id)
         {
             mscon.Open();
-            string msg1 = "select count(*) from arm";
-            MySqlCommand mscmd = new MySqlCommand(msg1, mscon);
-            MySqlDataReader reader = mscmd.ExecuteReader();
-            if (reader.Read())
-            {
-                reader.Close();
-                string msg2 =
-                    "insert into arm values(" + id + ","
-                    + arm.ElbowPosition.x + ","
-                    + arm.ElbowPosition.y + ","
-                    + arm.ElbowPosition.z + ","
-                    + arm.WristPosition.x + ","
-                    + arm.WristPosition.y + ","
-                    + arm.WristPosition.z + ","
-                    + arm.Center.x + ","
-                    + arm.Center.y + ","
-                    + arm.Center.z + ","
-                    + arm.Direction.x + ","
-                    + arm.Direction.y + ","
-                    + arm.Direction.z + ","
-                    + arm.Length + ","
-                    + arm.Width + ","
-                    + arm.Rotation.x + ","
-                    + arm.Rotation.y + ","
-                    + arm.Rotation.z + ","
-                    + arm.Rotation.w + ");"
-                    ;
-                mscmd = new MySqlCommand(msg2, mscon);
-            }
+            string msg2 =
+                "insert into arm values(" + id + ","
+                + arm.ElbowPosition.x + ","
+                + arm.ElbowPosition.y + ","
+                + arm.ElbowPosition.z + ","
+                + arm.WristPosition.x + ","
+                + arm.WristPosition.y + ","
+                + arm.WristPosition.z + ","
+                + arm.Center.x + ","
+                + arm.Center.y + ","
+                + arm.Center.z + ","
+                + arm.Direction.x + ","
+                + arm.Direction.y + ","
+                + arm.Direction.z + ","
+                + arm.Length + ","
+                + arm.Width + ","
+                + arm.Rotation.x + ","
+                + arm.Rotation.y + ","
+                + arm.Rotation.z + ","
+                + arm.Rotation.w + ");"
+                ;
+            MySqlCommand mscmd = new MySqlCommand(msg2, mscon);
             if (mscmd.ExecuteNonQuery() > 0)
             {
                 Console.WriteLine(mscmd.CommandText);

@@ -60,9 +60,9 @@ namespace LeapSql
                         new Vector(reader.GetFloat(12), reader.GetFloat(13), reader.GetFloat(14)),//stablizedpalmposition
                         new Vector(reader.GetFloat(15), reader.GetFloat(16), reader.GetFloat(17)),//palmvelocity
                         new Vector(reader.GetFloat(18), reader.GetFloat(19), reader.GetFloat(20)),//palmnormal
-                        new LeapQuaternion(reader.GetFloat(21), reader.GetFloat(22), reader.GetFloat(22), reader.GetFloat(23)),//palmorientation
-                        new Vector(reader.GetFloat(24), reader.GetFloat(25), reader.GetFloat(26)),//direction
-                        new Vector(reader.GetFloat(27), reader.GetFloat(28), reader.GetFloat(29))//wristposition
+                        new LeapQuaternion(reader.GetFloat(21), reader.GetFloat(22), reader.GetFloat(23), reader.GetFloat(24)),//palmorientation
+                        new Vector(reader.GetFloat(25), reader.GetFloat(26), reader.GetFloat(27)),//direction
+                        new Vector(reader.GetFloat(28), reader.GetFloat(29), reader.GetFloat(30))//wristposition
 
                         );
                     hand = buffer;
