@@ -82,7 +82,7 @@ namespace WinForm
             Hand_Description.Location = new Point(430,500);
             Hand_Description.Size = new Size(200, 100);
             Hand_Description.ReadOnly = false;
-            
+            Hand_Description.Visible = false;
             this.Controls.Add(Hand_Description);
             
         }
