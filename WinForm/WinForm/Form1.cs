@@ -25,7 +25,7 @@ namespace WinForm
 
         [DllImport("user32.dll ", EntryPoint = "ShowWindow")]
         public static extern int ShowWindow(IntPtr hwnd, int nCmdShow);
-
+        string p_name = "demo1";
         private bool Listening_FLag;
         public Process p;
         public bool pflag;
@@ -110,17 +110,17 @@ namespace WinForm
         */
         private void MainForm_Load(object sender, EventArgs e)
         {
+            Clear_Unity();
             this.FingerList.Columns.Add("Finger Name");
             this.FingerList.Columns.Add("Tip Distance");
             handsql.mscon = new MySqlConnection(DBinfo);
             Show_Mode2();
             //connecter.InitSocket();
         }
-
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void Clear_Unity()
         {
             //Process[] ps = Process.GetProcessesByName("DEMO_f");
-            Process[] ps = Process.GetProcessesByName("demo1");
+            Process[] ps = Process.GetProcessesByName(p_name);
             //if(ps.Length > 0)
             foreach (Process p in ps)
             {
@@ -128,8 +128,12 @@ namespace WinForm
                 p.Kill();
                 System.Threading.Thread.Sleep(10);
                 //ps = Process.GetProcessesByName("DEMO_f");
-            } 
-            
+            }
+        }
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+            Clear_Unity();
             System.Environment.Exit(0);
         }
 
@@ -166,12 +170,10 @@ namespace WinForm
             SendIdForm sif = new SendIdForm();
             sif.Owner = this;
             sif.Show();
-            while(sif.IsAccessible)
-            {
-
-            }
+            /*
             hb.ShowHand(true);
             hb.SetHand();
+            */
             Show_Mode1();
         }
 
@@ -202,9 +204,14 @@ namespace WinForm
             if (!pflag && this.Exe_Panel.Created)
             {
                 p.Start();
+                while(Process.GetProcessesByName(p_name).Count()==0)
+                {
+                    System.Threading.Thread.Sleep(1000);
+                }
                 System.Threading.Thread.Sleep(10000);
                 SetParent(p.MainWindowHandle, this.Exe_Panel.Handle);
                 ShowWindow(p.MainWindowHandle, 3);//push unity program into container
+                //System.Threading.Thread.Sleep(5000);
                 pflag = true;
                 connecter.InitSocket();
                 System.Threading.Thread.Sleep(100);
@@ -303,6 +310,12 @@ namespace WinForm
             System.Threading.Thread.Sleep(100);
             connecter.SocketSend("0|"+DBinfo);
             //connecter.SocketSend(DBinfo);
+        }
+
+        private void 数据库管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DBManager dbm = new DBManager();
+            dbm.Show();
         }
     }
 }

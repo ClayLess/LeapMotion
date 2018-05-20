@@ -47,13 +47,13 @@ namespace WinForm
             this.下载数据库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.重置并上传数据库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.新建条目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.删改条目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.数据库管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据库连接信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StartSene = new System.Windows.Forms.ToolStripMenuItem();
+            this.调试启动ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.VHand_name_Label = new System.Windows.Forms.Label();
             this.VHand_Name_TextBox = new System.Windows.Forms.TextBox();
             this.UpLoad_Button = new System.Windows.Forms.Button();
-            this.调试qidongToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -140,7 +140,7 @@ namespace WinForm
             this.比较模式ToolStripMenuItem,
             this.数据库ToolStripMenuItem,
             this.StartSene,
-            this.调试qidongToolStripMenuItem});
+            this.调试启动ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(664, 25);
@@ -176,7 +176,7 @@ namespace WinForm
             this.下载数据库ToolStripMenuItem,
             this.重置并上传数据库ToolStripMenuItem,
             this.新建条目ToolStripMenuItem,
-            this.删改条目ToolStripMenuItem,
+            this.数据库管理ToolStripMenuItem,
             this.数据库连接信息ToolStripMenuItem});
             this.数据库ToolStripMenuItem.Name = "数据库ToolStripMenuItem";
             this.数据库ToolStripMenuItem.Size = new System.Drawing.Size(56, 21);
@@ -201,11 +201,13 @@ namespace WinForm
             this.新建条目ToolStripMenuItem.Text = "新建条目";
             this.新建条目ToolStripMenuItem.Click += new System.EventHandler(this.新建条目ToolStripMenuItem_Click);
             // 
-            // 删改条目ToolStripMenuItem
+            // 数据库管理ToolStripMenuItem
             // 
-            this.删改条目ToolStripMenuItem.Name = "删改条目ToolStripMenuItem";
-            this.删改条目ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.删改条目ToolStripMenuItem.Text = "删改条目";
+            this.数据库管理ToolStripMenuItem.Name = "数据库管理ToolStripMenuItem";
+            this.数据库管理ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.数据库管理ToolStripMenuItem.Text = "管理数据库";
+            this.数据库管理ToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.数据库管理ToolStripMenuItem.Click += new System.EventHandler(this.数据库管理ToolStripMenuItem_Click);
             // 
             // 数据库连接信息ToolStripMenuItem
             // 
@@ -220,6 +222,14 @@ namespace WinForm
             this.StartSene.Size = new System.Drawing.Size(68, 21);
             this.StartSene.Text = "启动场景";
             this.StartSene.Click += new System.EventHandler(this.启动场景ToolStripMenuItem_Click);
+            // 
+            // 调试启动ToolStripMenuItem
+            // 
+            this.调试启动ToolStripMenuItem.Name = "调试启动ToolStripMenuItem";
+            this.调试启动ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.调试启动ToolStripMenuItem.Text = "调试启动";
+            this.调试启动ToolStripMenuItem.Visible = false;
+            this.调试启动ToolStripMenuItem.Click += new System.EventHandler(this.调试qidongToolStripMenuItem_Click);
             // 
             // VHand_name_Label
             // 
@@ -246,13 +256,6 @@ namespace WinForm
             this.UpLoad_Button.Text = "Upload";
             this.UpLoad_Button.UseVisualStyleBackColor = true;
             this.UpLoad_Button.Click += new System.EventHandler(this.UpLoad_Button_Click);
-            // 
-            // 调试qidongToolStripMenuItem
-            // 
-            this.调试qidongToolStripMenuItem.Name = "调试qidongToolStripMenuItem";
-            this.调试qidongToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.调试qidongToolStripMenuItem.Text = "调试启动";
-            this.调试qidongToolStripMenuItem.Click += new System.EventHandler(this.调试qidongToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -310,13 +313,13 @@ namespace WinForm
         private System.Windows.Forms.ToolStripMenuItem 下载数据库ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 重置并上传数据库ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 新建条目ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 删改条目ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 数据库管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem StartSene;
         private System.Windows.Forms.ToolStripMenuItem 数据库连接信息ToolStripMenuItem;
         private System.Windows.Forms.Label VHand_name_Label;
         private System.Windows.Forms.TextBox VHand_Name_TextBox;
         private System.Windows.Forms.Button UpLoad_Button;
-        private System.Windows.Forms.ToolStripMenuItem 调试qidongToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 调试启动ToolStripMenuItem;
     }
 }
 

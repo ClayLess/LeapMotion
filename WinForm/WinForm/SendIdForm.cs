@@ -29,6 +29,8 @@ namespace WinForm
                 father.handsql.GetHandFromDB(id);
                 father.hb.hand = father.handsql.hand;
                 father.hb.hand_id = id;
+                father.hb.SetHand();
+                father.hb.ShowHand(true);
                 this.Close();
             }
         }
