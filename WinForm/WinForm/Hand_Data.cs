@@ -91,9 +91,6 @@ namespace HandDatas
             RING=3,
             PINKY=4
         }
-
-        
-
         public FingerKeyData()
         {
             Bone_ = new BoneKeyData[4];

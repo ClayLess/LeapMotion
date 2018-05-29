@@ -61,10 +61,15 @@ namespace Compare_Normalized
                 //get dot metrix answer of finger on different hands
                 tmp_dot = hkd0.Finger_[i].TipPosition.Dot(hkd1.Finger_[i].TipPosition);
                 //fingertip of each hand do self dot metrix, and the answer is square tip-palm distance
+                /*
                 fkd0_self_dot = Self_Dot(hkd0.Finger_[i].TipPosition);
                 fkd1_self_dot = Self_Dot(hkd1.Finger_[i].TipPosition);
                 //chose the bigger one
                 fkd0_self_dot = fkd0_self_dot > fkd1_self_dot ? fkd0_self_dot : fkd1_self_dot;
+                */
+                fkd0_self_dot = hkd0.Finger_[i].TipPosition.DistanceTo(new Vector(0, 0, 0));
+                fkd1_self_dot = hkd1.Finger_[i].TipPosition.DistanceTo(new Vector(0, 0, 0));
+                fkd0_self_dot *= fkd1_self_dot;
                 //get answer of it minus dot metrix.
                 answer += fkd0_self_dot - tmp_dot;
             }

@@ -79,10 +79,9 @@ namespace WinForm
             BasicDic.Add(this.Exe_Panel.Name + "Size", p_size);
             //\end test
             Hand_Description = new TextBox();
-            Hand_Description.Location = new Point(430,500);
-            Hand_Description.Size = new Size(200, 100);
+            
             Hand_Description.ReadOnly = false;
-            Hand_Description.Visible = false;
+            Hand_Description.Visible = true;
             this.Controls.Add(Hand_Description);
             
         }
@@ -120,6 +119,10 @@ namespace WinForm
             this.FingerList.Columns.Add("Finger Name");
             this.FingerList.Columns.Add("Tip Distance");
             handsql.mscon = new MySqlConnection(DBinfo);
+            Hand_Description.Top =VHand_name_Label.Top;
+            Hand_Description.Left = FingerList.Left;
+            Hand_Description.Size = new Size(FingerList.Size.Width, FingerList.Size.Height);
+            Hand_Description.Visible = false;
             Show_Mode2();
             //connecter.InitSocket();
         }
@@ -180,7 +183,9 @@ namespace WinForm
             hb.ShowHand(true);
             hb.SetHand();
             */
+            VHand_Name_TextBox.Text = "TestHand3";
             Show_Mode1();
+           
         }
 
         private void 双手比较ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -248,6 +253,7 @@ namespace WinForm
         private void 新建条目ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             hb.ShowHand(false);
+            
             Show_Mode3();//进入上传模式
         }
         private void Show_Mode1()//单手比较模式
@@ -263,7 +269,7 @@ namespace WinForm
             LeapStatus.Show();
             VHand_name_Label.Show();
             VHand_Name_TextBox.Show();
-            VHand_Name_TextBox.Text = hb.hand_name;
+            //VHand_Name_TextBox.Text = hb.hand_name;
             VHand_Name_TextBox.ReadOnly = true;
             Hand_Description.Hide();
             UpLoad_Button.Hide();
@@ -293,6 +299,7 @@ namespace WinForm
             DotMult_Lable.Hide();
             DotMult_Text.Hide();
             FingerList.Hide();
+            //LeapStatus.Hide();
             VHand_name_Label.Show();
             VHand_Name_TextBox.Show();
             VHand_Name_TextBox.Text = "";
@@ -327,6 +334,11 @@ namespace WinForm
         {
             DBManager dbm = new DBManager();
             dbm.Show();
+        }
+
+        private void VHand_Name_TextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

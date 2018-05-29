@@ -60,7 +60,7 @@ namespace WinForm
             // Compare_Label
             // 
             this.Compare_Label.AutoSize = true;
-            this.Compare_Label.Location = new System.Drawing.Point(111, 514);
+            this.Compare_Label.Location = new System.Drawing.Point(111, 504);
             this.Compare_Label.Name = "Compare_Label";
             this.Compare_Label.Size = new System.Drawing.Size(47, 12);
             this.Compare_Label.TabIndex = 1;
@@ -69,7 +69,7 @@ namespace WinForm
             // Eculid_Label
             // 
             this.Eculid_Label.AutoSize = true;
-            this.Eculid_Label.Location = new System.Drawing.Point(111, 541);
+            this.Eculid_Label.Location = new System.Drawing.Point(111, 531);
             this.Eculid_Label.Name = "Eculid_Label";
             this.Eculid_Label.Size = new System.Drawing.Size(41, 12);
             this.Eculid_Label.TabIndex = 2;
@@ -78,7 +78,7 @@ namespace WinForm
             // DotMult_Lable
             // 
             this.DotMult_Lable.AutoSize = true;
-            this.DotMult_Lable.Location = new System.Drawing.Point(111, 568);
+            this.DotMult_Lable.Location = new System.Drawing.Point(111, 558);
             this.DotMult_Lable.Name = "DotMult_Lable";
             this.DotMult_Lable.Size = new System.Drawing.Size(47, 12);
             this.DotMult_Lable.TabIndex = 3;
@@ -86,21 +86,21 @@ namespace WinForm
             // 
             // Compare_Text
             // 
-            this.Compare_Text.Location = new System.Drawing.Point(183, 511);
+            this.Compare_Text.Location = new System.Drawing.Point(183, 501);
             this.Compare_Text.Name = "Compare_Text";
             this.Compare_Text.Size = new System.Drawing.Size(100, 21);
             this.Compare_Text.TabIndex = 4;
             // 
             // Eculid_Text
             // 
-            this.Eculid_Text.Location = new System.Drawing.Point(183, 538);
+            this.Eculid_Text.Location = new System.Drawing.Point(183, 528);
             this.Eculid_Text.Name = "Eculid_Text";
             this.Eculid_Text.Size = new System.Drawing.Size(100, 21);
             this.Eculid_Text.TabIndex = 5;
             // 
             // DotMult_Text
             // 
-            this.DotMult_Text.Location = new System.Drawing.Point(183, 565);
+            this.DotMult_Text.Location = new System.Drawing.Point(183, 555);
             this.DotMult_Text.Name = "DotMult_Text";
             this.DotMult_Text.Size = new System.Drawing.Size(100, 21);
             this.DotMult_Text.TabIndex = 6;
@@ -111,7 +111,7 @@ namespace WinForm
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LeapStatus.AutoSize = true;
-            this.LeapStatus.Location = new System.Drawing.Point(111, 624);
+            this.LeapStatus.Location = new System.Drawing.Point(111, 614);
             this.LeapStatus.Name = "LeapStatus";
             this.LeapStatus.Size = new System.Drawing.Size(0, 12);
             this.LeapStatus.TabIndex = 7;
@@ -121,13 +121,13 @@ namespace WinForm
             this.Exe_Panel.AutoSize = true;
             this.Exe_Panel.Location = new System.Drawing.Point(12, 36);
             this.Exe_Panel.Name = "Exe_Panel";
-            this.Exe_Panel.Size = new System.Drawing.Size(640, 456);
+            this.Exe_Panel.Size = new System.Drawing.Size(640, 433);
             this.Exe_Panel.TabIndex = 8;
             // 
             // FingerList
             // 
             this.FingerList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FingerList.Location = new System.Drawing.Point(426, 498);
+            this.FingerList.Location = new System.Drawing.Point(426, 488);
             this.FingerList.Name = "FingerList";
             this.FingerList.Size = new System.Drawing.Size(226, 144);
             this.FingerList.TabIndex = 9;
@@ -143,7 +143,7 @@ namespace WinForm
             this.调试启动ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(664, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(666, 25);
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -234,7 +234,7 @@ namespace WinForm
             // VHand_name_Label
             // 
             this.VHand_name_Label.AutoSize = true;
-            this.VHand_name_Label.Location = new System.Drawing.Point(51, 600);
+            this.VHand_name_Label.Location = new System.Drawing.Point(51, 590);
             this.VHand_name_Label.Name = "VHand_name_Label";
             this.VHand_name_Label.Size = new System.Drawing.Size(107, 12);
             this.VHand_name_Label.TabIndex = 13;
@@ -242,14 +242,16 @@ namespace WinForm
             // 
             // VHand_Name_TextBox
             // 
-            this.VHand_Name_TextBox.Location = new System.Drawing.Point(183, 597);
+            this.VHand_Name_TextBox.Location = new System.Drawing.Point(183, 587);
             this.VHand_Name_TextBox.Name = "VHand_Name_TextBox";
             this.VHand_Name_TextBox.Size = new System.Drawing.Size(100, 21);
             this.VHand_Name_TextBox.TabIndex = 14;
+            this.VHand_Name_TextBox.Text = "TestHand3";
+            this.VHand_Name_TextBox.TextChanged += new System.EventHandler(this.VHand_Name_TextBox_TextChanged);
             // 
             // UpLoad_Button
             // 
-            this.UpLoad_Button.Location = new System.Drawing.Point(290, 619);
+            this.UpLoad_Button.Location = new System.Drawing.Point(290, 609);
             this.UpLoad_Button.Name = "UpLoad_Button";
             this.UpLoad_Button.Size = new System.Drawing.Size(75, 23);
             this.UpLoad_Button.TabIndex = 15;
@@ -265,7 +267,7 @@ namespace WinForm
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(664, 654);
+            this.ClientSize = new System.Drawing.Size(666, 661);
             this.Controls.Add(this.UpLoad_Button);
             this.Controls.Add(this.VHand_Name_TextBox);
             this.Controls.Add(this.VHand_name_Label);
