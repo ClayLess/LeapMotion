@@ -148,6 +148,7 @@ namespace LeapSql
             mscon.Open();
             string msg =
                 "delete from hand where hand_id = " + id + ";"
+                +"delete from hand_info where hand_id = " + id + ";"
                 + "delete from arm where arm_id = " + id + ";"
                 + "delete from finger where finger_id >" + id * 10 + " and finger_id<" + (id * 10 + 9) + ";"
                 + "delete from bone where bone_id >" + id * 100 + " and bone_id<" + (id * 100 + 99)+";";
@@ -180,6 +181,14 @@ namespace LeapSql
             AddHand2DB(id);
             return id;
         }
+        public int AddHand2DB(string name,string intro)
+        {
+            int id = -1;
+            id = FindNextId();
+            AddHand2DB(id);
+            AddNew2HandInfo(id, name, intro);
+            return id;
+        }
         public int FindNextId()
         {
             int id = -1;
@@ -197,6 +206,51 @@ namespace LeapSql
             }
             mscon.Close();
             return id;
+        }
+        public string[] FindHand(string limit)
+        {
+            List<string> result = new List<string>();
+            mscon.Open();
+            string msg = "select * from hand_info " + limit;
+            MySqlCommand mscmd = new MySqlCommand(msg, mscon);
+            MySqlDataReader reader = mscmd.ExecuteReader();
+            while (reader.Read())
+            {
+                string tmp = reader.GetString(0)+ "|"+reader.GetString(1)+ "|"+reader.GetString(2);
+                result.Add(tmp);
+            }
+            if(result.Count==0)
+            {
+                result.Add("");
+            }
+            mscon.Close();
+            return result.ToArray();
+        }
+        public void AddNew2HandInfo(int id,string name,string intro)
+        {
+            mscon.Open();
+            string msg = "insert into hand_info values(" + id + ",\"" + name + "\",\"" + intro + "\")";
+            MySqlCommand mscmd = new MySqlCommand(msg, mscon);
+            if (mscmd.ExecuteNonQuery() > 0)
+            {
+                Console.WriteLine(mscmd.CommandText);
+                Console.WriteLine("数据插入成功！");
+            }
+            mscon.Close();
+        }
+        public string FindHandName(int id)
+        {
+            string result = "";
+            mscon.Open();
+            string msg = "select name from hand_info where hand_id=" + id;
+            MySqlCommand mscmd = new MySqlCommand(msg, mscon);
+            MySqlDataReader reader = mscmd.ExecuteReader();
+            if (reader.Read())
+            {
+                result = reader.GetString(0);
+            }
+            mscon.Close();
+            return result;
         }
     }
 }

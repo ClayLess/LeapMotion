@@ -174,18 +174,34 @@ namespace WinForm
         private Dictionary<String, Point> BasicDic = new Dictionary<string, Point>();
         [DllImport("user32.dll")]
         public static extern bool SetForegroundWindow(int hWnd);
+        public void Change_Vhand_Name(string newname)
+        {
+            VHand_Name_TextBox.Text = newname;
+        }
         private void 单手比较ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            /*
             SendIdForm sif = new SendIdForm();
             sif.Owner = this;
             sif.Show();
+            */
             /*
             hb.ShowHand(true);
             hb.SetHand();
             */
-            VHand_Name_TextBox.Text = "TestHand3";
-            Show_Mode1();
+            if(hb.hand_id>0)
+            {
+                connecter.SocketSend("1|" + hb.hand_id);
+                Show_Mode1();
+                hb.SetHand(handsql.hand);
+                hb.ShowHand(true);
+            }
+            else
+            {
+                MessageBox.Show("未加载手数据");
+            }
            
+            
         }
 
         private void 双手比较ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -194,23 +210,24 @@ namespace WinForm
             Show_Mode2();
             hb.ShowHand(false);
         }
-
-        private void 从LeapMotion读取ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Hand hand = Program.fhc.ll.handspool[0];
-            Hand hand = Program.fhc.ll.GetNowHand0();
-            HandSql hs = new HandSql(new MySqlConnection(DBinfo));
-            hs.hand = hand;
-            hs.AddHand2DB();
-        }
-
         private void 数据库连接信息ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DB_Connecter subform = new DB_Connecter();
             subform.Owner = this;
             subform.Show();
         }
-
+        private void Connect2Unity()
+        {
+            try
+            {
+                connecter.InitSocket();
+            }
+            catch
+            {
+                MessageBox.Show("连接失败请重试","Error",MessageBoxButtons.OK);
+                Connect2Unity();
+            }
+        }
         private void 启动场景ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!pflag && this.Exe_Panel.Created)
@@ -221,12 +238,13 @@ namespace WinForm
                     System.Threading.Thread.Sleep(1000);
                 }
                 
-                System.Threading.Thread.Sleep(10000);
+                System.Threading.Thread.Sleep(15000);
                 SetParent(p.MainWindowHandle, this.Exe_Panel.Handle);
                 ShowWindow(p.MainWindowHandle, 3);//push unity program into container
                 //System.Threading.Thread.Sleep(5000);
                 pflag = true;
-                connecter.InitSocket();
+                //connecter.InitSocket();
+                Connect2Unity();
                 System.Threading.Thread.Sleep(100);
                 connecter.SocketSend("0|"+DBinfo);
                 System.Threading.Thread.Sleep(100);
@@ -313,12 +331,12 @@ namespace WinForm
         {
             Hand tmp = Program.fhc.ll.GetNowHand0();
             //tmp.CopyFrom(Program.fhc.ll.handspool[0]);
-            DialogResult dr = MessageBox.Show(this,"Do you want to Upload this hand "+VHand_Name_TextBox +" as ID:"+ handsql.FindNextId(),"Upload Comfirm",MessageBoxButtons.OKCancel);
+            DialogResult dr = MessageBox.Show(this,"Do you want to Upload this hand: "+VHand_Name_TextBox.Text +" as ID:"+ handsql.FindNextId(),"Upload Comfirm",MessageBoxButtons.OKCancel);
             if(dr.Equals(DialogResult.OK))
             {
                 hb.hand = tmp;
                 handsql.hand = hb.hand;
-                hb.hand_id = handsql.AddHand2DB();
+                hb.hand_id = handsql.AddHand2DB(VHand_Name_TextBox.Text,Hand_Description.Text);
             }
         }
 
@@ -333,6 +351,7 @@ namespace WinForm
         private void 数据库管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DBManager dbm = new DBManager();
+            dbm.Owner = this;
             dbm.Show();
         }
 

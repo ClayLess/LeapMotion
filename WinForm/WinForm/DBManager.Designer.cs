@@ -31,13 +31,13 @@
             this.ID_textBox = new System.Windows.Forms.TextBox();
             this.Name_textBox = new System.Windows.Forms.TextBox();
             this.Intro_textBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.search_button = new System.Windows.Forms.Button();
+            this.clear_button = new System.Windows.Forms.Button();
             this.ID_Label = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.Hand_Info_View = new System.Windows.Forms.ListView();
-            this.button3 = new System.Windows.Forms.Button();
+            this.select_button = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -62,23 +62,25 @@
             this.Intro_textBox.Size = new System.Drawing.Size(268, 21);
             this.Intro_textBox.TabIndex = 2;
             // 
-            // button1
+            // search_button
             // 
-            this.button1.Location = new System.Drawing.Point(111, 179);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "搜索";
-            this.button1.UseVisualStyleBackColor = true;
+            this.search_button.Location = new System.Drawing.Point(111, 179);
+            this.search_button.Name = "search_button";
+            this.search_button.Size = new System.Drawing.Size(75, 23);
+            this.search_button.TabIndex = 3;
+            this.search_button.Text = "搜索";
+            this.search_button.UseVisualStyleBackColor = true;
+            this.search_button.Click += new System.EventHandler(this.search_button_Click);
             // 
-            // button2
+            // clear_button
             // 
-            this.button2.Location = new System.Drawing.Point(232, 178);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "清空";
-            this.button2.UseVisualStyleBackColor = true;
+            this.clear_button.Location = new System.Drawing.Point(232, 178);
+            this.clear_button.Name = "clear_button";
+            this.clear_button.Size = new System.Drawing.Size(75, 23);
+            this.clear_button.TabIndex = 4;
+            this.clear_button.Text = "清空";
+            this.clear_button.UseVisualStyleBackColor = true;
+            this.clear_button.Click += new System.EventHandler(this.clear_button_Click);
             // 
             // ID_Label
             // 
@@ -109,22 +111,24 @@
             // 
             // Hand_Info_View
             // 
+            this.Hand_Info_View.FullRowSelect = true;
             this.Hand_Info_View.Location = new System.Drawing.Point(55, 216);
             this.Hand_Info_View.Name = "Hand_Info_View";
             this.Hand_Info_View.Size = new System.Drawing.Size(334, 97);
             this.Hand_Info_View.TabIndex = 8;
             this.Hand_Info_View.UseCompatibleStateImageBehavior = false;
-            this.Hand_Info_View.View = System.Windows.Forms.View.List;
+            this.Hand_Info_View.View = System.Windows.Forms.View.Details;
             this.Hand_Info_View.SizeChanged += new System.EventHandler(this.Hand_Info_View_SizeChanged);
             // 
-            // button3
+            // select_button
             // 
-            this.button3.Location = new System.Drawing.Point(395, 216);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "选中";
-            this.button3.UseVisualStyleBackColor = true;
+            this.select_button.Location = new System.Drawing.Point(395, 216);
+            this.select_button.Name = "select_button";
+            this.select_button.Size = new System.Drawing.Size(75, 23);
+            this.select_button.TabIndex = 9;
+            this.select_button.Text = "选中";
+            this.select_button.UseVisualStyleBackColor = true;
+            this.select_button.Click += new System.EventHandler(this.select_button_Click);
             // 
             // button5
             // 
@@ -134,6 +138,7 @@
             this.button5.TabIndex = 11;
             this.button5.Text = "删除";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // DBManager
             // 
@@ -141,13 +146,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(570, 368);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.select_button);
             this.Controls.Add(this.Hand_Info_View);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ID_Label);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.clear_button);
+            this.Controls.Add(this.search_button);
             this.Controls.Add(this.Intro_textBox);
             this.Controls.Add(this.Name_textBox);
             this.Controls.Add(this.ID_textBox);
@@ -165,13 +170,13 @@
         private System.Windows.Forms.TextBox ID_textBox;
         private System.Windows.Forms.TextBox Name_textBox;
         private System.Windows.Forms.TextBox Intro_textBox;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button search_button;
+        private System.Windows.Forms.Button clear_button;
         private System.Windows.Forms.Label ID_Label;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListView Hand_Info_View;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button select_button;
         private System.Windows.Forms.Button button5;
     }
 }

@@ -24,12 +24,17 @@ namespace WinForm
             if (dr.Equals(DialogResult.OK))
             {
                 MainForm father = (MainForm)this.Owner;
-                father.connecter.SocketSend("1|"+ HandId_textBox.Text);
+                
                 //father.connecter.SocketSend(HandId_textBox.Text);
                 father.handsql.GetHandFromDB(id);
+                string s = "where hand_id = " + father.hb.hand_id;
+                
+                
                 //father.hb.hand = father.handsql.hand;
                 father.hb.hand_id = id;
+                father.hb.hand_name = father.handsql.FindHandName(id);
                 father.hb.SetHand(father.handsql.hand);
+                father.Change_Vhand_Name(father.hb.hand_name);
                 father.hb.ShowHand(true);
                 this.Close();
             }

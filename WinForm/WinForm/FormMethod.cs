@@ -179,9 +179,6 @@ namespace FormMethod
                 nowHand0.CopyFrom(frame.Hands[0]);
                 copyflag = false;
             }
-            //handspool.Initialize();
-            //handspool = frame.Hands.ToArray();
-            //frame.Hands.ToArray().CopyTo(handspool, 0);
             //add virtual hand
             if (vhand_flag)
             {
