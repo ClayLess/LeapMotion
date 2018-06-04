@@ -35,7 +35,7 @@ namespace WinForm
             }
             catch
             {
-                System.Windows.Forms.MessageBox.Show("数据库连接失败");
+                System.Windows.Forms.MessageBox.Show("场景连接失败");
             }
         }
         public void InitSocket(string ip_address,int port)

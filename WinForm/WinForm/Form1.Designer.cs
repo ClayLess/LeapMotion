@@ -44,8 +44,6 @@ namespace WinForm
             this.单手比较ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.双手比较ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.下载数据库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.重置并上传数据库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.新建条目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据库管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据库连接信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -173,8 +171,6 @@ namespace WinForm
             // 数据库ToolStripMenuItem
             // 
             this.数据库ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.下载数据库ToolStripMenuItem,
-            this.重置并上传数据库ToolStripMenuItem,
             this.新建条目ToolStripMenuItem,
             this.数据库管理ToolStripMenuItem,
             this.数据库连接信息ToolStripMenuItem});
@@ -182,29 +178,17 @@ namespace WinForm
             this.数据库ToolStripMenuItem.Size = new System.Drawing.Size(56, 21);
             this.数据库ToolStripMenuItem.Text = "数据库";
             // 
-            // 下载数据库ToolStripMenuItem
-            // 
-            this.下载数据库ToolStripMenuItem.Name = "下载数据库ToolStripMenuItem";
-            this.下载数据库ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.下载数据库ToolStripMenuItem.Text = "下载数据库";
-            // 
-            // 重置并上传数据库ToolStripMenuItem
-            // 
-            this.重置并上传数据库ToolStripMenuItem.Name = "重置并上传数据库ToolStripMenuItem";
-            this.重置并上传数据库ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.重置并上传数据库ToolStripMenuItem.Text = "重置并上传数据库";
-            // 
             // 新建条目ToolStripMenuItem
             // 
             this.新建条目ToolStripMenuItem.Name = "新建条目ToolStripMenuItem";
-            this.新建条目ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.新建条目ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.新建条目ToolStripMenuItem.Text = "新建条目";
             this.新建条目ToolStripMenuItem.Click += new System.EventHandler(this.新建条目ToolStripMenuItem_Click);
             // 
             // 数据库管理ToolStripMenuItem
             // 
             this.数据库管理ToolStripMenuItem.Name = "数据库管理ToolStripMenuItem";
-            this.数据库管理ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.数据库管理ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.数据库管理ToolStripMenuItem.Text = "管理数据库";
             this.数据库管理ToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.数据库管理ToolStripMenuItem.Click += new System.EventHandler(this.数据库管理ToolStripMenuItem_Click);
@@ -212,7 +196,7 @@ namespace WinForm
             // 数据库连接信息ToolStripMenuItem
             // 
             this.数据库连接信息ToolStripMenuItem.Name = "数据库连接信息ToolStripMenuItem";
-            this.数据库连接信息ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.数据库连接信息ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.数据库连接信息ToolStripMenuItem.Text = "数据库连接信息";
             this.数据库连接信息ToolStripMenuItem.Click += new System.EventHandler(this.数据库连接信息ToolStripMenuItem_Click);
             // 
@@ -312,8 +296,6 @@ namespace WinForm
         private System.Windows.Forms.ToolStripMenuItem 单手比较ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 双手比较ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 数据库ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 下载数据库ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 重置并上传数据库ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 新建条目ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 数据库管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem StartSene;
